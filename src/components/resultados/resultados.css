@@ -1,0 +1,138 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+
+.result {
+  min-height: 100vh;
+  font-family: "Nunito", sans-serif;
+  background-color: #2e2e30;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/*?======================
+/*?    NOTAS CONTAINER
+/*?========================*/
+.nota_container {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 5vw;
+}
+
+.nota_container img {
+	cursor: pointer;
+	width: 180px;
+	height: 180px;
+	transition: transform 0.8s linear; /* Controla el tiempo de transición */
+	transform: rotate(0deg); /* Posición inicial */ 
+}
+.nota_container img:hover {
+	transform: rotate(-250deg); /* Rotación completa al pasar el ratón */
+}
+
+
+.nota,
+.correctas {
+  width: 300px;
+  border-radius: 20px;
+  background-color: #494949;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+}
+
+.nota h1,
+.correctas h1 {
+  color: #b392e8;
+  padding: 20px 40px 20px 30px;
+  font-size: 28px;
+}
+
+.nota h2,
+.correctas h2 {
+  font-style: italic;
+  color: white;
+  font-size: 60px;
+  padding-bottom: 40px;
+  text-align: center;
+}
+
+/*?======================
+/*?    INCORRECTAS
+/*?========================*/
+.incorrectas_container {
+	display: grid;
+  margin: 5vw 7vw;
+  padding-bottom: 20px;
+  border-radius: 20px;
+  background-color: #494949;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+	box-sizing: border-box; /* Asegura que padding se incluya dentro del tamaño */
+}
+
+.incorrectas_container p {
+  font-size: 25px;
+  padding: 10px 0 0 20px;
+  color: #9b9b9b;
+}
+
+.incorrectas {
+  display: flex;
+  align-items: center;
+  padding: 20px 0 0 30px;
+  gap: 30px;
+}
+
+.incorrectas h1 {
+  font-size: 30px;
+  color: #b392e8;
+}
+
+.incorrectas h2 {
+  font-style: italic;
+  color: white;
+  font-size: 30px;
+}
+
+/*?===========================
+/*?    RESULTADOS INCORRECTAS
+/*?========================*/
+.incorrectas_text li {
+  padding: 10px 30px;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+	gap: 20px;
+}
+
+/*? Princpio*/
+.principio, .incorrecta, .correcta {
+  display: flex;
+  align-items: center;
+}
+
+.principio { 
+	gap: 20px; 
+	flex-basis: 27%;
+}
+.principio span {
+  font-style: italic;
+  color: #c2c2c2;
+}
+.principio img {
+  width: 10px;
+}
+
+/*? (In)Correcta */
+.incorrecta img, .correcta img {
+  width: 30px;
+}
+
+.incorrecta {
+	gap: 10px; 
+	color: #f06f79;
+	flex-basis: 34%;
+}
+
+.correcta {
+	gap: 10px; 
+	color: #96cf8f;
+	flex-basis: 34%;
+}
