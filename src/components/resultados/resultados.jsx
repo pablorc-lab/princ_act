@@ -1,37 +1,36 @@
 import React, { useState } from 'react'
 import "./resultados.css"
-import Preguntas from "../../data/principios.json";
-import Dot from "./dot.png"
-import Cross from "./cross.png"
-import Check from "./check.png"
-import Retry from "./retry.png"
+import Dot from "../../images/dot.png"
+import Cross from "../../images/cross.png"
+import Check from "../../images/check.png"
+import Retry from "../../images/retry.png"
 
-export default function Final_result({  handleFinalizarQuiz, respuestas_Incorrectas }) {
-	const correctas = Preguntas.length - respuestas_Incorrectas.length;
-	const nota = ((correctas / Preguntas.length) * 10).toFixed(2);
+export default function Final_result({tam_preguntas, incorrectas}) {
+	const correctas = tam_preguntas - incorrectas.length;
+	const nota = ((correctas / tam_preguntas) * 10).toFixed(2);
 
 	return(
 		<div className="result">
 			<section className='nota_container'>
 				<div className='correctas'>
 					<h1>CORRECTAS</h1>
-					<h2>{correctas} / {Preguntas.length}</h2>
+					<h2>{correctas} / {tam_preguntas}</h2>
 				</div>
 				<div className='nota'>
 					<h1>NOTA</h1>
 					<h2>{nota}</h2>
 				</div>			
-				<img src={Retry} onClick={handleFinalizarQuiz}/>
+				<img src={Retry} onClick={() => window.location.reload()}/>
 			</section>
 
 			<section className='incorrectas_container'>
 				<div className='incorrectas'>
 					<h1>INCORRECTAS</h1>
-					<h2>{respuestas_Incorrectas.length}</h2>
+					<h2>{incorrectas.length}</h2>
 				</div>
 
 				<ul className='incorrectas_text'>
-        	{respuestas_Incorrectas.map((respuesta, index) => (
+        	{incorrectas.map((respuesta, index) => (
 						<li key={index}>
 							<div className='principio'>
 								<img src={Dot} alt="circulo"/>
@@ -52,6 +51,5 @@ export default function Final_result({  handleFinalizarQuiz, respuestas_Incorrec
       	</ul>
 			</section>
 		</div>
-	)
-
+	);
 }

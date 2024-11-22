@@ -1,34 +1,30 @@
 import React, { useState, useRef, useEffect} from 'react'
-import Preguntas from "../../data/principios.json";
-import Atomo from "./atomo.png"
-import Continuar from "./continuar.png"
-import Gengar from "./gengar.webp"
-import Puntos from "./puntos.png"
-import Micro from "./micro.png"
+import Atomo from "../../images/atomo.png"
+import Continuar from "../../images/continuar.png"
+import Gengar from "../../images/gengar.webp"
+import Puntos from "../../images/puntos.png"
 import './preguntas.css';
 
- 
-export default function Quiz_preguntas({ setRespuestas_Incorrectas, handleFinalizarQuiz }) {
-	//* Desordenar las preguntas al cargar el componente
+export default function Quiz_preguntas({Preguntas, setIncorrectas, setQuizCompleted}) {
 	const [preguntasMezcladas, setPreguntasMezcladas] = useState([]);
-  useEffect(() => {
-			const preguntasAleatorias = [...Preguntas].sort(() => Math.random() - 0.5);
-			setPreguntasMezcladas(preguntasAleatorias);
-			setPrincipio(preguntasAleatorias[0]);
-	}, []);
-
-	//* Se crean los estados de las variables que cambian con el tiempo
-	const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(0);
 	const [principio_actual, setPrincipio] = useState(null);
 	const [texto, setTexto] = useState('');
 	const inputRef = useRef(null); //* Referencia para el input
 
-	//* Función para manejar el cambio en el input
+	// Desordenar las preguntas al cargar el componente
+	useEffect(() => {
+		const preguntasAleatorias = [...Preguntas].sort(() => Math.random() - 0.5);
+		setPreguntasMezcladas(preguntasAleatorias);
+		setPrincipio(preguntasAleatorias[0]);
+}, []);
+
+	// Función para manejar el cambio en el input
 	const textoCambiante = (event) => {
 		setTexto(event.target.value);
 	}
 
-	//* Funciones para controlar los estados
+	// Funciones para controlar los estados
 	const verificarRespuesta = () => {
 		const quitarTildes = (str) => { return str.normalize('NFD').replace(/[\u0300-\u036f]/g, ''); };
 
@@ -47,19 +43,19 @@ export default function Quiz_preguntas({ setRespuestas_Incorrectas, handleFinali
 	const Cambiar_principio = () => {
 		if(!verificarRespuesta()){
 			//* Se coge todos los valores y se añade el nuevo
-			setRespuestas_Incorrectas(valores => [
-				...valores,
+			setIncorrectas((prevIncorrectas) => [
+				...prevIncorrectas,
 				{
 					principio: principio_actual.principio,
-					incorrecta: texto.charAt(0).toUpperCase() + texto.slice(1), 
-					correcta:  principio_actual.tipo.charAt(0).toUpperCase() + principio_actual.tipo.slice(1),
+					incorrecta: texto.charAt(0).toUpperCase() + texto.slice(1),
+					correcta: principio_actual.tipo.charAt(0).toUpperCase() + principio_actual.tipo.slice(1),
 				},
-			]);
-			
+			]);		
 		}
 
+		// Si no hay mas preguntas se finaliza
 		if(index + 1 === preguntasMezcladas.length)
-			handleFinQuiz();
+			setQuizCompleted(true);
 
 		setPrincipio(preguntasMezcladas[index + 1]);
 		setIndex(index + 1);
@@ -73,15 +69,9 @@ export default function Quiz_preguntas({ setRespuestas_Incorrectas, handleFinali
 			Cambiar_principio(); //* Cambia de pregunta si se presiona Enter
 
 		else if(index >= 45)
-			handleFinQuiz()
+			setQuizCompleted(true);
 	};
 
-	//* Cuando se termina el quiz, pasamos las respuestas incorrectas al componente principal
-	const handleFinQuiz = () => {
-		handleFinalizarQuiz(); 
-	};
-
-	
 	return (
 		<div className="App">
 			<img className='Gengar' src={Gengar} alt="gengar"/>

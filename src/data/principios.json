@@ -35,13 +35,13 @@
   {"principio": "Ácido tranexámico", "tipo": "para la sangre", "uso": "antifibrinolítico"},
   {"principio": "Ramipril", "tipo": "antihipertensivo", "uso": ""},
   {"principio": "Peróxido de benzoilo", "tipo": "para el acné", "uso": ""},
-  {"principio": "Eritromicida", "tipo": "antibiótico", "uso": ""},
+  {"principio": "Eritromicina", "tipo": "antibiótico", "uso": ""},
   {"principio": "Metrotexato", "tipo": "para la psoriasis", "uso": ""},
   {"principio": "Celecoxib", "tipo": "antiinflamatorio", "uso": ""},
   {"principio": "Nistatina", "tipo": "antifúngico", "uso": ""},
   {"principio": "Loperamida", "tipo": "astringente", "uso": "aspirina"},
   {"principio": "Simeticona", "tipo": "para los gases", "uso": ""},
   {"principio": "Acido acetilsalicílico", "tipo": "antiagregante plaquetario", "uso": "prevenir trombos e infartos"},
-  {"principio": "Lometazepam", "tipo": "para dormir", "uso": "ansiolítico"},
+  {"principio": "Lormetazepam", "tipo": "para dormir", "uso": "ansiolítico"},
   {"principio": "Amitriptilina", "tipo": "antidepresivo", "uso": ""}
 ]
