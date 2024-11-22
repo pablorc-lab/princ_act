@@ -1,9 +1,9 @@
 import React, { useState} from 'react'
-import Preguntas from "../data/test.json";
+import Preguntas from "../data/principios.json";
 import Quiz_preguntas from './preguntas/Preguntas';
 import Final_result from './resultados/resultados';
 
-export default function Home_preguntas(){
+export default function Quiz({respuesta_inmediata}){
   const [incorrectas, setIncorrectas] = useState([]);
   const [quizCompleted, setQuizCompleted] = useState(false);
 
@@ -14,6 +14,7 @@ export default function Home_preguntas(){
           Preguntas={Preguntas}
           setIncorrectas={setIncorrectas} 
           setQuizCompleted={setQuizCompleted} 
+          respuesta_inmediata = {respuesta_inmediata}
         />
       ) : ( 
         <Final_result 

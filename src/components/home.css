@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+
+.menu {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  background-color: #2e2e30;
+}
+.gastly {
+  display: flex;
+  justify-content: center;
+  animation: moveAndRotate 2s alternate infinite; /* Duración de 4s, movimiento suave y repetitivo */
+
+}
+.gastly img{
+  width: 250px;
+  height: auto;
+}
+
+@keyframes moveAndRotate {
+  0% { opacity: 0.1;}
+  100% { opacity: 1;}
+}
+
+
+.botones {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10vw;
+}
+
+button { 
+  font-family: "Nunito", sans-serif;
+  cursor: pointer;
+  border: none;
+
+  background-color: #8985b6;
+  font-size: 35px;
+  font-weight: 700;
+  color: white;
+  animation: brillar 1s alternate ease-in-out infinite;
+  transition: transform 0.3s;
+  width: 400px;
+  padding: 40px 0;
+  border-radius: 20px;
+}
+
+@keyframes brillar {
+  0% {box-shadow: 0 0 15px rgba(137, 131, 199,.6);}
+  100% {box-shadow: 0 0 30px rgba(137, 131, 199,1);}
+}
+
+button:hover {
+  transition: transform 0.3s;
+  transform: scale(1.1);
+}

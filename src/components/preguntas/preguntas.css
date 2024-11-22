@@ -35,6 +35,49 @@
 /*?==============
 /*?     PAPEL 
 /*?==============*/ 
+.Papel_container {
+  width: calc(90%);
+  font-family: "Nunito", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Papel_solt {
+  min-width: 40vw;
+  height: 20vw;
+  z-index: 99;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: 1fr; /* Una sola columna que ocupa todo el ancho */
+  grid-template-rows: auto 1fr; /* Primera fila ajustada al contenido, segunda ocupa el resto */  border-radius: 15px;
+  background-color: #494949;
+  padding: 20px;
+  box-shadow: 0 0 10px black;
+}
+
+.Papel_solt h2 {
+  padding: 10px 0;
+  text-align: center;
+  font-size: 45px;
+  color: #c2c2c2;
+  text-decoration: underline;
+}
+
+.solutions_container {
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; /* Centra verticalmente los elementos dentro del contenedor */
+  gap: 10px; 
+  height: 100%; 
+}
+.incorrecta, .correcta {
+  font-size: 25px;
+}
+.incorrecta p{color: #f06f79;}
+.correcta p{color: #96cf8f;}
+
 .Papel::before {
   content: '';
   position: absolute;
@@ -52,7 +95,6 @@
 }
 
 .Papel {
-  font-family: "Nunito", sans-serif;
   border-radius: 15px;
   height: 20vw; 
   min-width: 40vw; /*? Ancho mínimo para el contenedor */
