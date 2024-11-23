@@ -57,7 +57,7 @@ export default function Quiz_preguntas({ Preguntas, setIncorrectas, setQuizCompl
 				principio_actual.tipo.charAt(0).toUpperCase() + principio_actual.tipo.slice(1)
 			]);
 
-			//* Se coge todos los valores y se añade el nuevo
+			// Se coge todos los valores y se añade el nuevo
 			setIncorrectas((prevIncorrectas) => [
 				...prevIncorrectas,
 				{
@@ -75,7 +75,7 @@ export default function Quiz_preguntas({ Preguntas, setIncorrectas, setQuizCompl
 				principio_actual.tipo.charAt(0).toUpperCase() + principio_actual.tipo.slice(1)
 			]);
 		}
-
+		
 		// Si no hay mas preguntas se finaliza
 		if (index + 1 === preguntasMezcladas.length)
 			setQuizCompleted(true);
