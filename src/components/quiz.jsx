@@ -1,24 +1,22 @@
 import React, { useState} from 'react'
-import Preguntas from "../data/principios.json";
 import Quiz_preguntas from './preguntas/Preguntas';
 import Final_result from './resultados/resultados';
 
 export default function Quiz({respuesta_inmediata}){
   const [incorrectas, setIncorrectas] = useState([]);
-  const [quizCompleted, setQuizCompleted] = useState(false);
+  const [tam_preguntas, setTam_preguntas] = useState(null);
 
   return (
     <>
-      {!quizCompleted ? ( 
+      {!tam_preguntas ? ( 
         <Quiz_preguntas 
-          Preguntas={Preguntas}
           setIncorrectas={setIncorrectas} 
-          setQuizCompleted={setQuizCompleted} 
+          setTam_preguntas={setTam_preguntas} 
           respuesta_inmediata = {respuesta_inmediata}
         />
       ) : ( 
         <Final_result 
-          tam_preguntas={Preguntas.length}
+          tam_preguntas={tam_preguntas}
           incorrectas={incorrectas} />
       )}
     </>

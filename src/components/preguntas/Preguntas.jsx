@@ -1,4 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react'
+import Preguntas from "../../data/principios.json";
+import "./../resultados/resultados.css"
+import './preguntas.css';
+
 import Atomo from "../../images/atomo.png"
 import Continuar from "../../images/continuar.png"
 import Gengar from "../../images/gengar.webp"
@@ -7,15 +11,14 @@ import Dot from "../../images/dot.png"
 import Cross from "../../images/cross.png"
 import Check from "../../images/check.png"
 import Retry from "../../images/retry.png"
-import "./../resultados/resultados.css"
-import './preguntas.css';
 
-export default function Quiz_preguntas({ Preguntas, setIncorrectas, setQuizCompleted, respuesta_inmediata = false }) {
+
+export default function Quiz_preguntas({setIncorrectas, setTam_preguntas, respuesta_inmediata = false }) {
 	const [preguntasMezcladas, setPreguntasMezcladas] = useState([]);
 	const [index, setIndex] = useState(0);
 	const [principio_actual, setPrincipio] = useState(null);
 	const [texto, setTexto] = useState('');
-	const inputRef = useRef(null); //* Referencia para el input
+	const inputRef = useRef(null); // Referencia para el input
 	// [0]=principio [1]=incorrecta [2]=correcta
 	const [valores_actuales, setValores_act] = useState([null, null, null]);
 	const [mostrar_solucion, setMostrar_solucion] = useState(false);
@@ -25,6 +28,14 @@ export default function Quiz_preguntas({ Preguntas, setIncorrectas, setQuizCompl
 		const preguntasAleatorias = [...Preguntas].sort(() => Math.random() - 0.5);
 		setPreguntasMezcladas(preguntasAleatorias);
 		setPrincipio(preguntasAleatorias[0]);
+
+		if(!respuesta_inmediata){
+			const cantidad = prompt(`¿Cuántas preguntas quieres que se muestren?\n${Preguntas.length} en total`);
+			(cantidad > 0) 
+				? setPreguntasMezcladas(preguntasAleatorias.slice(0, cantidad)) 
+				: setPreguntasMezcladas(preguntasAleatorias);
+		}
+
 	}, []);
 
 	// Función para manejar el cambio en el input
@@ -51,20 +62,21 @@ export default function Quiz_preguntas({ Preguntas, setIncorrectas, setQuizCompl
 	const Cambiar_principio = () => {
 
 		if (!verificarRespuesta()) {
-			setValores_act([
-				principio_actual.principio,
-				texto.charAt(0).toUpperCase() + texto.slice(1),
-				principio_actual.tipo.charAt(0).toUpperCase() + principio_actual.tipo.slice(1)
-			]);
+			const nuevoValores = [
+        principio_actual.principio,
+        texto.charAt(0).toUpperCase() + texto.slice(1),
+        principio_actual.tipo.charAt(0).toUpperCase() + principio_actual.tipo.slice(1),
+			];
 
-			// Se coge todos los valores y se añade el nuevo
+			setValores_act(nuevoValores);
+
 			setIncorrectas((prevIncorrectas) => [
-				...prevIncorrectas,
-				{
-					principio: valores_actuales[0],
-					incorrecta: valores_actuales[1],
-					correcta: valores_actuales[2],
-				},
+					...prevIncorrectas,
+					{
+							principio: nuevoValores[0],
+							incorrecta: nuevoValores[1],
+							correcta: nuevoValores[2],
+					},
 			]);
 		}
 
@@ -78,7 +90,7 @@ export default function Quiz_preguntas({ Preguntas, setIncorrectas, setQuizCompl
 		
 		// Si no hay mas preguntas se finaliza
 		if (index + 1 === preguntasMezcladas.length)
-			setQuizCompleted(true);
+			setTam_preguntas(preguntasMezcladas.length);
 
 		setPrincipio(preguntasMezcladas[index + 1]);
 		setIndex(index + 1);
@@ -88,7 +100,7 @@ export default function Quiz_preguntas({ Preguntas, setIncorrectas, setQuizCompl
 
 	// Función para manejar la pulsación de tecla Enter
 	const handleKeyPress = (event) => {
-		if (event.key === 'Enter' && index < 45 && (texto || mostrar_solucion)) {
+		if (event.key === "Enter" && index < 45 && (texto || mostrar_solucion)) {
 			if (!respuesta_inmediata || (respuesta_inmediata && !mostrar_solucion))
 				Cambiar_principio();
 
@@ -100,7 +112,7 @@ export default function Quiz_preguntas({ Preguntas, setIncorrectas, setQuizCompl
 		}
 
 		else if (index >= 45)
-			setQuizCompleted(true);
+			setTam_preguntas(preguntasMezcladas.length);
 	};
 
 
@@ -131,8 +143,12 @@ export default function Quiz_preguntas({ Preguntas, setIncorrectas, setQuizCompl
 				{/*Papel*/}
 				{!mostrar_solucion && (
 					<div className="Papel">
-						<p className='contador'>{index + 1} / {preguntasMezcladas.length}</p>
-						<h1>{principio_actual ? principio_actual.principio : "..."}</h1>
+						<p className='contador'> 
+							{principio_actual ? `${index + 1} / ${preguntasMezcladas.length}` : '-/-'}
+						</p>
+						<h1>
+							{principio_actual ? principio_actual.principio : "..."}
+						</h1>
 					</div>
 				)}
 			</div>
