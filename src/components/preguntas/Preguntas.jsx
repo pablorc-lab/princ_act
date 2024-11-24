@@ -71,12 +71,12 @@ export default function Quiz_preguntas({setIncorrectas, setTam_preguntas, respue
 			setValores_act(nuevoValores);
 
 			setIncorrectas((prevIncorrectas) => [
-					...prevIncorrectas,
-					{
-							principio: nuevoValores[0],
-							incorrecta: nuevoValores[1],
-							correcta: nuevoValores[2],
-					},
+				...prevIncorrectas,
+				{
+					principio: nuevoValores[0],
+					incorrecta: nuevoValores[1],
+					correcta: nuevoValores[2],
+				},
 			]);
 		}
 

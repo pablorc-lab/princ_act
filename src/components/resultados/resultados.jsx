@@ -5,9 +5,14 @@ import Cross from "../../images/cross.png"
 import Check from "../../images/check.png"
 import Retry from "../../images/retry.png"
 
-export default function Final_result({tam_preguntas, incorrectas}) {
+export default function Final_result({tam_preguntas, incorrectas, setTam_preguntas, setIncorrectas}) {
 	const correctas = tam_preguntas - incorrectas.length;
 	const nota = ((correctas / tam_preguntas) * 10).toFixed(2);
+
+	const handleRetry = () => {
+		setTam_preguntas(null);
+		setIncorrectas([]);
+	}
 
 	return(
 		<div className="result">
@@ -20,7 +25,7 @@ export default function Final_result({tam_preguntas, incorrectas}) {
 					<h1>NOTA</h1>
 					<h2>{nota}</h2>
 				</div>			
-				<img src={Retry} onClick={() => window.location.reload()}/>
+				<img src={Retry} onClick={handleRetry} />
 			</section>
 
 			<section className='incorrectas_container'>

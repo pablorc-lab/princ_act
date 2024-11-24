@@ -17,7 +17,10 @@ export default function Quiz({respuesta_inmediata}){
       ) : ( 
         <Final_result 
           tam_preguntas={tam_preguntas}
-          incorrectas={incorrectas} />
+          incorrectas={incorrectas} 
+          setTam_preguntas={setTam_preguntas} 
+          setIncorrectas={setIncorrectas} 
+        />
       )}
     </>
   );
