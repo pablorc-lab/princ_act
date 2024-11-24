@@ -6,6 +6,11 @@ export default function Quiz({respuesta_inmediata}){
   const [incorrectas, setIncorrectas] = useState([]);
   const [tam_preguntas, setTam_preguntas] = useState(null);
 
+  const handleReiniciar = () => {
+    setIncorrectas([]);  // Limpiar respuestas incorrectas
+    setTam_preguntas(null);  // Resetear el número de preguntas
+  };
+
   return (
     <>
       {!tam_preguntas ? ( 
@@ -18,8 +23,7 @@ export default function Quiz({respuesta_inmediata}){
         <Final_result 
           tam_preguntas={tam_preguntas}
           incorrectas={incorrectas} 
-          setTam_preguntas={setTam_preguntas} 
-          setIncorrectas={setIncorrectas} 
+          handleReiniciar={handleReiniciar}  // Pasar función para reiniciar 
         />
       )}
     </>
