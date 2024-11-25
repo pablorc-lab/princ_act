@@ -10,11 +10,11 @@ export default function Home(){
       </div>
       
       <div className='botones'>
-        <Link to="/princ_act/practicar">
+        <Link to="/practicar">
           <button>Practicar principios</button>
         </Link>
 
-        <Link to="/princ_act/quiz">
+        <Link to="/quiz">
           <button>Hacer el Quiz</button>
         </Link>        
       </div>
