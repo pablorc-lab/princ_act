@@ -11,10 +11,18 @@
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
-    <title>Test | Principios activos</title>
+    <title>Home</title>
+
+    <!--Si el enlace web no tiene "#" se redirige al home-->
+    <script>
+      if (!window.location.hash) {
+        window.location.replace(window.location + "#/");
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
     
   </body>
+  
 </html>

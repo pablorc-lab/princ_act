@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./resultados.css"
 import Dot from "../../images/dot.png"
 import Cross from "../../images/cross.png"
@@ -9,6 +9,10 @@ export default function Final_result({tam_preguntas, incorrectas, handleReinicia
 	const correctas = tam_preguntas - incorrectas.length;
 	const nota = ((correctas / tam_preguntas) * 10).toFixed(2);
 
+	useEffect(() => {
+		document.title = "Resultados obtenidos";
+	})
+	
 	return(
 		<div className="result">
 			<section className='nota_container'>

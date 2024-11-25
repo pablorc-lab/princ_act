@@ -25,6 +25,8 @@ export default function Quiz_preguntas({setIncorrectas, setTam_preguntas, respue
 
 	// Desordenar las preguntas al cargar el componente
 	useEffect(() => {
+		document.title = (!respuesta_inmediata ? "Quiz " : "Practicar ") + "principios activos";
+
 		const preguntasAleatorias = [...Preguntas].sort(() => Math.random() - 0.5);
 		setPreguntasMezcladas(preguntasAleatorias);
 		setPrincipio(preguntasAleatorias[0]);
