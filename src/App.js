@@ -7,7 +7,7 @@ function App() {
   return (
     <HashRouter>
       <Routes>
-        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/quiz" element={<Quiz />} />
         <Route path="/practicar" element={<Quiz respuesta_inmediata={true} />} />
       </Routes>
