@@ -2,7 +2,7 @@ import React, { useState} from 'react'
 import Quiz_preguntas from './preguntas/Preguntas';
 import Final_result from './resultados/resultados';
 
-export default function Quiz({respuesta_inmediata}){
+export default function Quiz({respuesta_inmediata=false}){
   const [incorrectas, setIncorrectas] = useState([]);
   const [tam_preguntas, setTam_preguntas] = useState(null);
 
