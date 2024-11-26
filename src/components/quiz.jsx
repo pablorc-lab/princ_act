@@ -1,6 +1,8 @@
 import React, { useState} from 'react'
+import { Link } from 'react-router-dom'; 
 import Quiz_preguntas from './preguntas/Preguntas';
 import Final_result from './resultados/resultados';
+import Casa from "../images/logo_home.png"
 
 export default function Quiz({respuesta_inmediata=false}){
   const [incorrectas, setIncorrectas] = useState([]);
@@ -13,6 +15,23 @@ export default function Quiz({respuesta_inmediata=false}){
 
   return (
     <>
+    	<Link to="/">
+        <img
+          src={Casa}
+          alt="home logo"
+          style={{
+            position: 'absolute',
+            left: '20px',
+            top: '20px',
+            width: '80px',
+            cursor: 'pointer',
+            opacity: '0.7',
+          }}
+          onMouseOver={(e) => (e.currentTarget.style.opacity = '1')}
+          onMouseOut={(e) => (e.currentTarget.style.opacity = '0.5')}
+        />
+      </Link>
+
       {!tam_preguntas ? ( 
         <Quiz_preguntas 
           setIncorrectas={setIncorrectas} 

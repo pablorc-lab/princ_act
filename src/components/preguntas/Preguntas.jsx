@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import Preguntas from "../../data/principios.json";
+import { Link } from 'react-router-dom'; 
 import "./../resultados/resultados.css"
 import './preguntas.css';
 
@@ -11,7 +12,6 @@ import Dot from "../../images/dot.png"
 import Cross from "../../images/cross.png"
 import Check from "../../images/check.png"
 import Retry from "../../images/retry.png"
-
 
 export default function Quiz_preguntas({setIncorrectas, setTam_preguntas, respuesta_inmediata = false }) {
 	const [preguntasMezcladas, setPreguntasMezcladas] = useState([]);
@@ -39,11 +39,6 @@ export default function Quiz_preguntas({setIncorrectas, setTam_preguntas, respue
 		}
 
 	}, []);
-
-	// Función para manejar el cambio en el input
-	const textoCambiante = (event) => {
-		setTexto(event.target.value);
-	}
 
 	// Funciones para controlar los estados
 	const verificarRespuesta = () => {
@@ -164,7 +159,7 @@ export default function Quiz_preguntas({setIncorrectas, setTam_preguntas, respue
 					spellCheck="false"
 					placeholder='Escribe su uso...'
 					value={texto}
-					onChange={textoCambiante}
+					onChange={(e) => {setTexto(e.target.value);}}
 					onKeyDown={handleKeyPress}
 				/>
 				<img
