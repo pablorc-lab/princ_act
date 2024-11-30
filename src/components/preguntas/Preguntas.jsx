@@ -18,12 +18,12 @@ export default function Quiz_preguntas({setIncorrectas, setTam_preguntas, respue
 	const [index, setIndex] = useState(0);
 	const [principio_actual, setPrincipio] = useState(null);
 	const [texto, setTexto] = useState('');
-	const inputRef = useRef(null); // Referencia para el input
-	// [0]=principio [1]=incorrecta [2]=correcta
-	const [valores_actuales, setValores_act] = useState([null, null, null]);
+	const inputRef = useRef(null); //*Referencia para el input
+	//*[0]=principio [1]=incorrecta [2]=correcta
+	const [resultados_actuales, setResultados_act] = useState([null, null, null]);
 	const [mostrar_solucion, setMostrar_solucion] = useState(false);
 
-	// Desordenar las preguntas al cargar el componente
+	//*Desordenar las preguntas al cargar el componente
 	useEffect(() => {
 		document.title = (!respuesta_inmediata ? "Quiz " : "Practicar ") + "principios activos";
 
@@ -40,32 +40,50 @@ export default function Quiz_preguntas({setIncorrectas, setTam_preguntas, respue
 
 	}, []);
 
-	// Funciones para controlar los estados
+	//*Funciones para controlar los estados
 	const verificarRespuesta = () => {
 		const quitarTildes = (str) => { return str.normalize('NFD').replace(/[\u0300-\u036f]/g, ''); };
-
-		const tipo = quitarTildes(principio_actual.tipo.toLowerCase());
-		const textoUser = quitarTildes(texto.toLowerCase().trim());
-		const regex = new RegExp(`\\b(${tipo.replace('/', '|')})\\b`, 'i');
-
 		const quitarEspacios = (str) => { return str.replace(/\s+/g, '').toLowerCase(); };
 
+		// Normalizar el texto del principio
+		const tipo = quitarTildes(principio_actual.tipo.toLowerCase());
 		const tipo_norm = quitarTildes(quitarEspacios(principio_actual.tipo));
-		const textoUser_norm = quitarTildes(quitarEspacios(texto));
+		const uso = quitarTildes(principio_actual.uso.toLowerCase());
+		const uso_norm = quitarTildes(quitarEspacios(principio_actual.uso));
 
+		const regex = new RegExp(`\\b(${tipo.replace('/', '|')})\\b`, 'i');
+
+		// Normalizar el texto del usuario
+		const textoUser = quitarTildes(texto.toLowerCase().trim());
+		const textoUser_norm = quitarTildes(quitarEspacios(texto));
+		
+		// Si hay uso en ese principio
+		if(uso){
+			// Obtener el uso escrito por el usuario
+			const regexUso = new RegExp('\\(([^)]+)\\)'); 
+			const hay_uso = textoUser_norm.match(regexUso);
+
+			return (regex.test(textoUser) || (tipo_norm === textoUser_norm)) && (uso_norm === hay_uso[0].trim());
+		}
+		
+		// En otro caso solo comprueba el principio
 		return regex.test(textoUser) || (tipo_norm === textoUser_norm);
 	}
 
+	
+	//* Cambiar principio
 	const Cambiar_principio = () => {
+		// Verificar si tiene uso añadido el principio actual
+		let uso_actual = principio_actual.uso ? ` ${principio_actual.uso}` : "";
 
 		if (!verificarRespuesta()) {
 			const nuevoValores = [
         principio_actual.principio,
         texto.charAt(0).toUpperCase() + texto.slice(1),
-        principio_actual.tipo.charAt(0).toUpperCase() + principio_actual.tipo.slice(1),
+        principio_actual.tipo.charAt(0).toUpperCase() + principio_actual.tipo.slice(1) + uso_actual,
 			];
 
-			setValores_act(nuevoValores);
+			setResultados_act(nuevoValores);
 
 			setIncorrectas((prevIncorrectas) => [
 				...prevIncorrectas,
@@ -76,16 +94,15 @@ export default function Quiz_preguntas({setIncorrectas, setTam_preguntas, respue
 				},
 			]);
 		}
-
 		else {
-			setValores_act([
+			setResultados_act([
 				principio_actual.principio,
 				null,
-				principio_actual.tipo.charAt(0).toUpperCase() + principio_actual.tipo.slice(1)
+				principio_actual.tipo.charAt(0).toUpperCase() + principio_actual.tipo.slice(1) + uso_actual
 			]);
 		}
-		
-		// Si no hay mas preguntas se finaliza
+	
+		//* Si no hay mas preguntas se finaliza
 		if (index + 1 === preguntasMezcladas.length)
 			setTam_preguntas(preguntasMezcladas.length);
 
@@ -95,7 +112,8 @@ export default function Quiz_preguntas({setIncorrectas, setTam_preguntas, respue
 		inputRef.current.focus(); //* Enfocar automáticamente el input
 	};
 
-	// Función para manejar la pulsación de tecla Enter
+	
+	//*Función para manejar la pulsación de tecla Enter
 	const handleKeyPress = (event) => {
 		if (event.key === "Enter" && index < 45 && (texto || mostrar_solucion)) {
 			if (!respuesta_inmediata || (respuesta_inmediata && !mostrar_solucion))
@@ -112,6 +130,14 @@ export default function Quiz_preguntas({setIncorrectas, setTam_preguntas, respue
 			setTam_preguntas(preguntasMezcladas.length);
 	};
 
+	//* Muestra la solucion del principio si tiene uso
+	const showResult = () => {
+		if (principio_actual) {
+			return principio_actual.principio + (principio_actual.uso ? ` (${principio_actual.uso})` : ""); 
+		} 
+		return "..."; // Si no existe principio_actual, devolvemos "..."
+	}
+
 
 	return (
 		<div className="App">
@@ -122,16 +148,20 @@ export default function Quiz_preguntas({setIncorrectas, setTam_preguntas, respue
 				{/*Solucion inmediata*/}
 				{respuesta_inmediata && mostrar_solucion && (
 					<div className='Papel_solt'>
-						<h2>{valores_actuales[0]}</h2>
+						<h2>{resultados_actuales[0]}</h2>
 
 						<div className='solutions_container'>
-							<div className={valores_actuales[1] ? 'incorrecta' : 'correcta'}>
-								<img src={valores_actuales[1] ? Cross : Check} alt={valores_actuales[1] ? 'cross' : 'check'} />
-								<p>{valores_actuales[1] || valores_actuales[2]}</p>
+							<div className={resultados_actuales[1] ? 'incorrecta' : 'correcta'}>
+								<img 
+									src={resultados_actuales[1] ? Cross : Check} 
+									alt={resultados_actuales[1] ? 'cross' : 'check'} 
+								/>
+								<p>{resultados_actuales[1] || resultados_actuales[2]}</p>
 							</div>
+
 							<div className='correcta'>
 								<img src={Check} alt="check" />
-								<p>{valores_actuales[2]}</p>
+								<p>{resultados_actuales[2]}</p>
 							</div>
 						</div>
 					</div>
