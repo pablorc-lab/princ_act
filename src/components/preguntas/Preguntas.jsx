@@ -37,7 +37,6 @@ export default function Quiz_preguntas({setIncorrectas, setTam_preguntas, respue
 				? setPreguntasMezcladas(preguntasAleatorias.slice(0, cantidad)) 
 				: setPreguntasMezcladas(preguntasAleatorias);
 		}
-
 	}, []);
 
 	//*Funciones para controlar los estados
@@ -57,12 +56,12 @@ export default function Quiz_preguntas({setIncorrectas, setTam_preguntas, respue
 		const textoUser = quitarTildes(texto.toLowerCase().trim());
 		const textoUser_norm = quitarTildes(quitarEspacios(texto));
 		
-		// Si hay uso en ese principio
-		if(uso){
-			// Obtener el uso escrito por el usuario
-			const regexUso = new RegExp('\\(([^)]+)\\)'); 
-			const hay_uso = textoUser_norm.match(regexUso);
+		// Si hay uso en ese principio comprobar
+		const regexUso = new RegExp('\\(([^)]+)\\)'); 
+		const hay_uso = textoUser_norm.match(regexUso);
 
+		if(uso && hay_uso){
+			// Obtener el uso escrito por el usuario
 			return (regex.test(textoUser) || (tipo_norm === textoUser_norm)) && (uso_norm === hay_uso[0].trim());
 		}
 		
@@ -115,7 +114,7 @@ export default function Quiz_preguntas({setIncorrectas, setTam_preguntas, respue
 	
 	//*Función para manejar la pulsación de tecla Enter
 	const handleKeyPress = (event) => {
-		if (event.key === "Enter" && index < 45 && (texto || mostrar_solucion)) {
+		if (event.key === "Enter" && index < preguntasMezcladas.length && (texto || mostrar_solucion)) {
 			if (!respuesta_inmediata || (respuesta_inmediata && !mostrar_solucion))
 				Cambiar_principio();
 
@@ -126,7 +125,7 @@ export default function Quiz_preguntas({setIncorrectas, setTam_preguntas, respue
 			}
 		}
 
-		else if (index >= 45)
+		else if (index >= preguntasMezcladas.length)
 			setTam_preguntas(preguntasMezcladas.length);
 	};
 
