@@ -46,27 +46,44 @@ button {
   cursor: pointer;
   border: none;
 
-  opacity: 0.8;
-  background-color: #8985b6;
+  background-color: rgba(137, 133, 182, 0.8); /* Color con transparencia */
   font-size: 35px;
   font-weight: 700;
   color: white;
-  transition: all 0.3s ease-in-out;
+  transition: transform 0.2s ease-in-out;
   width: 400px;
   padding: 40px 0;
   border-radius: 20px;
-}
-
-@keyframes brillar {
-  0% {box-shadow: 0 0 15px rgba(137, 131, 199,.6);}
-  100% {box-shadow: 0 0 30px rgba(137, 131, 199,1);}
+  box-shadow: 0 0 10px rgba(255, 255, 255,0.4);
 }
 
 button:hover {
-  opacity: 1;
-  transition: transform 0.3s;
+  background-color: rgb(137, 133, 182); /* Color con transparencia */
   transform: scale(1.1);
-  animation: brillar 1s alternate ease-in-out infinite;
+  box-shadow: 0 0 15px rgba(137, 131, 199,1);
+}
+
+.tip {
+  transition: 1s ease-in-out;
+  display: flex;
+  align-items:  start;
+  border-radius: 10px;
+  padding: 15px;
+  font-size: 25px;
+  position: absolute;
+  background-color: beige;
+  top: 30px;
+  left: 30px;
+}
+
+.tip p {
+  font-family: "Nunito", sans-serif;
+  max-width: 70vw;
+}
+.tip img {
+  margin-right: 15px;
+  width: 60px;
+  aspect-ratio: 1/1;
 }
 
 /* Para dispositivos móviles */
@@ -77,6 +94,7 @@ button:hover {
     flex-direction: column;
     gap: 80px;
   }
+  .tip p {  max-width: 70vw}
 }
 
 /* Para pantallas de escritorio */
@@ -90,4 +108,7 @@ button:hover {
     font-size: 50px;
     width: 500px;
   }
+
+  .tip {align-items: center;}
+  .tip p {  max-width: 50vw}
 }
