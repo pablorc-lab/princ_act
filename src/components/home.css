@@ -1,13 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
 
+#root {
+  background-color: #2e2e30;
+}
+
 .menu {
-  height: 100%;
+  user-select:none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  grid-template-rows: auto 1fr;    /* Ajusta dos filas de igual tamaño */
+  transform: translate(-50%, -50%);
+  gap: 120px;
   display: grid;
-  grid-template-rows: 1fr 1fr;
   justify-content: center;
   align-items: center;
   padding: 30px;
-  background-color: #2e2e30;
 }
 .gastly {
   display: flex;
@@ -43,8 +51,7 @@ button {
   font-size: 35px;
   font-weight: 700;
   color: white;
-  animation: brillar 1s alternate ease-in-out infinite;
-  transition: transform 0.3s;
+  transition: all 0.3s ease-in-out;
   width: 400px;
   padding: 40px 0;
   border-radius: 20px;
@@ -59,4 +66,28 @@ button:hover {
   opacity: 1;
   transition: transform 0.3s;
   transform: scale(1.1);
+  animation: brillar 1s alternate ease-in-out infinite;
+}
+
+/* Para dispositivos móviles */
+@media screen and (max-width: 960px) {
+  .menu {gap: 80px;
+  }
+  .botones {
+    flex-direction: column;
+    gap: 80px;
+  }
+}
+
+/* Para pantallas de escritorio */
+@media screen and (min-width: 1200px) {
+  .gastly img{
+    width: 300px;
+    height: auto;
+  }
+
+  button {
+    font-size: 50px;
+    width: 500px;
+  }
 }
