@@ -31,7 +31,8 @@ export default function Quiz({respuesta_inmediata=false}){
           onMouseOut={(e) => (e.currentTarget.style.opacity = '0.5')}
         />
       </Link>
-
+      
+      {/**Si `tam_preguntas` es distinto de null, será porque se ha llegado al final*/}
       {!tam_preguntas ? ( 
         <Quiz_preguntas 
           setIncorrectas={setIncorrectas} 

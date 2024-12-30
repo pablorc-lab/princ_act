@@ -12,7 +12,7 @@
   {"principio": "Levofloxacino", "tipo": "antibiótico", "uso": ""},
   {"principio": "Aciclovir", "tipo": "antiviral", "uso": "(para los herpes de la boca)"},
   {"principio": "Hidroclorotiazida", "tipo": "diurético", "uso": ""},
-  {"principio": "Deflazacort", "tipo": "corticoide/antiinflamatorio", "uso": "(tercera generacion)"},
+  {"principio": "Deflazacort", "tipo": "corticoide / antiinflamatorio", "uso": "(tercera generacion)"},
   {"principio": "Dexketoprofeno", "tipo": "antiinflamatorio", "uso": "(Enantyum)"},
   {"principio": "Lorazepam", "tipo": "ansiolítico", "uso": "(acción corta) (benzodiazepinas)"},
   {"principio": "Zolpidem", "tipo": "análogo", "uso": "(para dormir)"},

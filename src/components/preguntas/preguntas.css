@@ -8,14 +8,14 @@
   flex-direction: column;  
   justify-content: center;
   align-items: center;
-  gap: 6vw;
+  gap: 80px;
 }
 
 .Gengar {
   position: absolute;
   opacity: 0.6;
   bottom: 10px;
-  left: 40px;
+  left: 10px;
   width: 120px;
 }
 
@@ -44,8 +44,8 @@
 }
 
 .Papel_solt {
-  min-width: 40vw;
-  height: 20vw;
+  height: 305px; 
+  min-width: 610px;
   z-index: 99;
   display: grid;
   justify-content: center;
@@ -96,8 +96,8 @@
 
 .Papel {
   border-radius: 15px;
-  height: 20vw; 
-  min-width: 40vw; /*? Ancho mínimo para el contenedor */
+  height: 305px; 
+  min-width: 610px; /*? Ancho mínimo para el contenedor */
   background-color: white;
   position: relative;
   display: inline-block; 
@@ -107,7 +107,7 @@
 
 .Papel h1{
   padding: 0 50px;
-  font-size: 5vw;
+  font-size: 70px;
   font-weight: 700;
   margin: 0;
   height: 100%;
@@ -126,6 +126,8 @@
   padding-left: 20px;
   font-size: 25px;
 }
+
+
 /*?==============
 /*?  RESPUESTA 
 /*?==============*/ 
@@ -139,7 +141,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 56vw;
+  width: 850px;
 }
 
 #Atomo_img {
@@ -160,16 +162,54 @@
   margin: 0 10px;
   font-family: "Nunito", sans-serif;
   text-align: left;
-  caret-color: purple; /*? Cambia el color del caret */
+  caret-color: rgb(34, 0, 128); /*? Cambia el color del caret */
 
-  font-size: 3vw;
-  font-weight: 600;
+  font-size: 45px;
   background-color: #c3beed;
 
-  width: 45vw;
+  width: 650px;
   border: none;
 }
 
 .Respuesta input:focus {
   outline: none; 
+}
+
+
+
+/* Moviles*/
+@media screen and (max-width: 760px) {
+  .App {gap: 70px;}
+  .Papel {
+    min-width: 450px;
+    height: 225px;
+  }
+  .Papel h1 {font-size: 50px;}
+
+  .Respuesta {max-width: 600px;}
+  .Respuesta input {
+    font-size: 40px;
+    width: 400px;
+  }
+
+  #Atomo_img {width: 55px;}
+  
+  #Continuar_img {width: 70px;}
+}
+
+/* Para pantallas menores */
+@media screen and (min-width: 761px) and (max-width: 1200px) {
+  .App {gap: 70px;}
+  .Papel {
+    min-width: 500px;
+    height: 255px;
+  }
+
+  .Papel h1 {font-size: 60px;}
+
+  .Respuesta {max-width: 700px;}
+  .Respuesta input {
+    font-size: 40px;
+    width: 600px;
+  }
 }

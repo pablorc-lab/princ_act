@@ -13,14 +13,15 @@ import Cross from "../../images/cross.png"
 import Check from "../../images/check.png"
 import Retry from "../../images/retry.png"
 
+//	Este componente se encarga de mostrar los modos Quiz y Práctica
+//	`respuesta_inmediata` controla este cambio, donde será False o True respectivamente	
 export default function Quiz_preguntas({setIncorrectas, setTam_preguntas, respuesta_inmediata = false }) {
 	const [preguntasMezcladas, setPreguntasMezcladas] = useState([]);
 	const [index, setIndex] = useState(0);
 	const [principio_actual, setPrincipio] = useState(null);
 	const [texto, setTexto] = useState('');
 	const inputRef = useRef(null); //*Referencia para el input
-	//*[0]=principio [1]=incorrecta [2]=correcta
-	const [resultados_actuales, setResultados_act] = useState([null, null, null]);
+	const [resultados_actuales, setResultados_act] = useState([null, null, null]);  //*[0]=principio [1]=incorrecta [2]=correcta
 	const [mostrar_solucion, setMostrar_solucion] = useState(false);
 
 	//*Desordenar las preguntas al cargar el componente
