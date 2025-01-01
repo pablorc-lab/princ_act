@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+
+.cantidad_container input::-webkit-inner-spin-button,
+.cantidad_container input::-webkit-outer-spin-button {
+  -webkit-appearance: none; /* Elimina las flechas en navegadores basados en WebKit */
+}
+
+.cantidad_container {
+    z-index: 999;
+    font-family: "Nunito", sans-serif;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    padding: 35px;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    background-color: #FFFFF0;
+    width:fit-content;
+
+    display: grid;
+    gap: 50px;
+}
+
+.cantidad_container h2 {
+    font-size: 35px;
+    text-align: center;
+}
+.cantidad_container input {
+    font-family: "Nunito", sans-serif;
+    font-size: 35px;
+    text-align: center;
+    border:  1px solid rgba(0,0,0,0.5);
+    background-color: rgb(202, 202, 202);  
+    width: 90px; 
+    height: 70px;
+    border-radius: 10px;
+}
+
+.cantidad_container input:focus {
+    outline: none; 
+    border:  1px solid rgba(0,0,0,0.5);
+}
+
+
+/* ?INPUT*/
+.input_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.input_container p {
+    font-size: 35px;
+}
+
+/* ?IMAGENES*/
+.cantidad_images {
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.cantidad_images  img{
+    width: 70px;
+    aspect-ratio: 1 / 1;
+}
+
+#cancel_img:hover {
+    cursor: pointer;
+    filter: brightness(0.6);
+}
+
+.check_deny {
+    filter: grayscale(100%);
+    cursor: not-allowed;
+}
+
+.check_allow { cursor: pointer;}
+.check_allow:hover { filter: brightness(0.7);}
+
+/* Para dispositivos móviles */
+@media screen and (max-width: 960px) {
+
+}
+  
+/* Para pantallas de escritorio */
+@media screen and (min-width: 1200px) {
+    
+}
+  

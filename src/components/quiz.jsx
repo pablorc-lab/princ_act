@@ -1,5 +1,5 @@
 import React, { useState} from 'react'
-import { Link } from 'react-router-dom'; 
+import { Link, useLocation } from 'react-router-dom'; 
 import Quiz_preguntas from './preguntas/Preguntas';
 import Final_result from './resultados/resultados';
 import Casa from "../images/logo_home.png"
@@ -7,6 +7,8 @@ import Casa from "../images/logo_home.png"
 export default function Quiz({respuesta_inmediata=false}){
   const [incorrectas, setIncorrectas] = useState([]);
   const [tam_preguntas, setTam_preguntas] = useState(null);
+  const location = useLocation();
+  const { cantidad_preguntas } = location.state || {}; 
 
   const handleReiniciar = () => {
     setIncorrectas([]);  // Limpiar respuestas incorrectas
@@ -38,6 +40,7 @@ export default function Quiz({respuesta_inmediata=false}){
           setIncorrectas={setIncorrectas} 
           setTam_preguntas={setTam_preguntas} 
           respuesta_inmediata = {respuesta_inmediata}
+          question_size = {cantidad_preguntas}
         />
       ) : ( 
         <Final_result 

@@ -1,6 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import Preguntas from "../../data/principios.json";
-import { Link } from 'react-router-dom'; 
 import "./../resultados/resultados.css"
 import './preguntas.css';
 
@@ -8,19 +7,16 @@ import Atomo from "../../images/atomo.png"
 import Continuar from "../../images/continuar.png"
 import Gengar from "../../images/gengar.webp"
 import Puntos from "../../images/puntos.png"
-import Dot from "../../images/dot.png"
 import Cross from "../../images/cross.png"
 import Check from "../../images/check.png"
-import Retry from "../../images/retry.png"
 
 //	Este componente se encarga de mostrar los modos Quiz y Práctica
 //	`respuesta_inmediata` controla este cambio, donde será False o True respectivamente	
-export default function Quiz_preguntas({setIncorrectas, setTam_preguntas, respuesta_inmediata = false }) {
+export default function Quiz_preguntas({setIncorrectas, setTam_preguntas, respuesta_inmediata = false, question_size=1 }) {
 	const [preguntasMezcladas, setPreguntasMezcladas] = useState([]);
 	const [index, setIndex] = useState(0);
 	const [principio_actual, setPrincipio] = useState(null);
 	const [texto, setTexto] = useState('');
-	const inputRef = useRef(null); //*Referencia para el input
 	const [resultados_actuales, setResultados_act] = useState([null, null, null]);  //*[0]=principio [1]=incorrecta [2]=correcta
 	const [mostrar_solucion, setMostrar_solucion] = useState(false);
 
@@ -33,10 +29,7 @@ export default function Quiz_preguntas({setIncorrectas, setTam_preguntas, respue
 		setPrincipio(preguntasAleatorias[0]);
 
 		if(!respuesta_inmediata){
-			const cantidad = prompt(`¿Cuántas preguntas quieres que se muestren?\n${Preguntas.length} en total`);
-			(cantidad > 0) 
-				? setPreguntasMezcladas(preguntasAleatorias.slice(0, cantidad)) 
-				: setPreguntasMezcladas(preguntasAleatorias);
+			setPreguntasMezcladas(preguntasAleatorias.slice(0, question_size)) 
 		}
 	}, []);
 
@@ -109,7 +102,6 @@ export default function Quiz_preguntas({setIncorrectas, setTam_preguntas, respue
 		setPrincipio(preguntasMezcladas[index + 1]);
 		setIndex(index + 1);
 		setTexto("");
-		inputRef.current.focus(); //* Enfocar automáticamente el input
 	};
 
 	
@@ -122,22 +114,12 @@ export default function Quiz_preguntas({setIncorrectas, setTam_preguntas, respue
 			if (respuesta_inmediata) {
 				setMostrar_solucion(!mostrar_solucion);
 				setTexto("");
-				inputRef.current.focus(); //* Enfocar automáticamente el input
 			}
 		}
 
 		else if (index >= preguntasMezcladas.length)
 			setTam_preguntas(preguntasMezcladas.length);
 	};
-
-	//* Muestra la solucion del principio si tiene uso
-	const showResult = () => {
-		if (principio_actual) {
-			return principio_actual.principio + (principio_actual.uso ? ` (${principio_actual.uso})` : ""); 
-		} 
-		return "..."; // Si no existe principio_actual, devolvemos "..."
-	}
-
 
 	return (
 		<div className="App">
@@ -184,7 +166,6 @@ export default function Quiz_preguntas({setIncorrectas, setTam_preguntas, respue
 				<img id="Atomo_img" src={Atomo} alt="atomo" />
 				<input
 					type='text'
-					ref={inputRef}
 					autoFocus
 					spellCheck="false"
 					placeholder='Escribe su uso...'
