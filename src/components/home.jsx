@@ -15,13 +15,11 @@ export default function Home() {
 
   return (
     <>
-      <img 
-        src={Libro} 
-        alt="libro" 
-        width="50" 
-        className='libro_img'
-        onClick={() => setShowData(true)}
-      />
+      <div className='libro_img'>
+        <h1>Apuntes ➟</h1>
+        <img src={Libro} alt="libro" width="50"  onClick={() => setShowData(true)}/>
+    </div>
+     
 
       <div className='menu'>
         <div className='gastly'>
@@ -57,7 +55,7 @@ export default function Home() {
       
       {/* Mostrar apuntes si está activado*/}
       {show_data && (
-        <div className="data_container"> <Apuntes/> </div>
+        <div className="data_container"> <Apuntes setShowData={setShowData}/> </div>
       )}
       
       {/* Si questions_size es true, muestra el componente QuestionsSize */}

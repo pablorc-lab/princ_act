@@ -5,15 +5,22 @@
 }
 
 .libro_img {
-  cursor: pointer;
+  font-family: "Nunito", sans-serif;
+  display: flex;
+  align-items: center;
   position: absolute;
   top: 30px;
   right: 30px;
-  width: 100px;
-  transition: 0.3s ease-in-out;
+  color: aliceblue;
+  gap: 15px;
 }
-
-.libro_img:hover {
+.libro_img img{ 
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  width: 100px;
+  aspect-ratio: 1 / 1;
+}
+.libro_img:hover img{
   transform: scale(1.2);
 }
 .menu {
@@ -116,6 +123,11 @@ button:hover {
 
 /* Para dispositivos móviles */
 @media screen and (max-width: 960px) {
+  .libro_img {font-size: 15px;}
+  .libro_img img{ 
+    width: 75px;
+  }
+
   .menu {gap: 80px;
   }
   .botones {

@@ -1,18 +1,27 @@
 import Preguntas from "./../../data/principios.json"
+import Cross from "../../images/cross_fill.png"
 import "./apuntes.css"
 
-export default function Apuntes() {
+export default function Apuntes({setShowData}) {
     return (
-        <div className="apuntes_container">
-            <h1>Principios activos  (Apuntes)</h1>
+        <section className="apuntes_container">
+            <img 
+                 id="cross_img" 
+                src={Cross} 
+                alt="cross" 
+                width="40"
+                onClick={() => {setShowData(false)}}
+            />
+            <h1>{Preguntas.length} principios activos </h1>
+            
             <ul className="apuntes_list">
                 {Preguntas.map((principio, index) => (
                     <li key={index}>
-                        <h2>{principio.principio}</h2>
-                        <p>{principio.tipo.charAt(0).toUpperCase()+principio.tipo.slice(1)} {principio.uso}</p>
+                        <h2> {index+1}. {principio.principio}</h2>
+                        <p>{principio.tipo.charAt(0).toUpperCase() + principio.tipo.slice(1)} {principio.uso}</p>
                     </li>
                 ))}
             </ul>
-        </div>
+        </section>
     )
 }
