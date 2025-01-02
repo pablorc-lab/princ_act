@@ -1,2 +1,4 @@
 [
-  {"principio": "Aciclovir", "tipo": "antiviral", "uso": "(para los herpes de la boca)"}]
+  {"principio": "Aciclovir", "tipo": "antiviral", "uso": "(para los herpes de la boca)"},
+  {"principio": "Simvastatina", "tipo": "antihipercolesterolémico", "uso": "(estatinas)"}
+]

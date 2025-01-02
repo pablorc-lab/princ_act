@@ -26,14 +26,13 @@ export default function QuestionsSize ({setQuestionsSize}){
         const valor_correcto = (value > 0) && (value <= Preguntas.length)
         setValidSize(valor_correcto);
     }
-
-     // Función para manejar el clic en la imagen
-    const handleImageClick = () => {
-        if (validSize) {
-            navigate('/quiz', { state: { cantidad_preguntas: number } }); 
-        }
-    };
     
+    // Manejar el pulsado de la tecla Enter
+    const handleKeyPress = (event) => {
+		if (event.key === "Enter" && validSize) 
+            navigate('/quiz', { state: { cantidad_preguntas: number } });
+	};
+
     return (
         <article className="cantidad_container">
             <h2>¿Cuantas preguntas quieres que se muestren?</h2>
@@ -43,6 +42,7 @@ export default function QuestionsSize ({setQuestionsSize}){
                     type="number"
                     value={number}
                     onChange={handleInputChange}
+                    onKeyDown={handleKeyPress}
                     autoFocus
                 />
                 <p> / {Preguntas.length}</p>
@@ -53,8 +53,8 @@ export default function QuestionsSize ({setQuestionsSize}){
                 <img 
                     src={Advance} 
                     className={validSize ? "check_allow" : "check_deny"}
-                    onClick={handleImageClick}
-                />
+                    onClick={() => validSize && navigate('/quiz', { state: { cantidad_preguntas: number } })}
+                 />
             </div>
         </article>
     )

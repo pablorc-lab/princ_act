@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+
+.apuntes_container {
+
+    border-radius: 15px;
+    font-family: "Nunito", sans-serif;
+    background-color: #FFFFF0;
+    width: 510px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    padding: 35px;
+    padding-top: 25px; 
+    transform: translate(-50%, -50%);
+    max-height: 90vh;
+    overflow-y: scroll;
+}
+
+.apuntes_container::-webkit-scrollbar { 
+    width: 15px;     
+}
+.apuntes_container::-webkit-scrollbar-button { padding: 5px;}
+.apuntes_container::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+}
+.apuntes_container::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.15);
+    border-radius: 15px; /* Asegura que la pista también tenga bordes redondeados */
+}
+
+
+.apuntes_container h1 {
+    margin-bottom: 20px;
+}
+.apuntes_list {
+    display: grid;
+    gap: 10px;
+}

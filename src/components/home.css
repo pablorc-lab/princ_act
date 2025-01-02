@@ -4,6 +4,18 @@
   background-color: #2e2e30;
 }
 
+.libro_img {
+  cursor: pointer;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  width: 100px;
+  transition: 0.3s ease-in-out;
+}
+
+.libro_img:hover {
+  transform: scale(1.2);
+}
 .menu {
   user-select:none;
   position: absolute;
@@ -26,6 +38,7 @@
 .gastly img{
   width: 250px;
   height: auto;
+  aspect-ratio: 1 / 1;
 }
 
 @keyframes moveAndRotate {
@@ -96,8 +109,8 @@ button:hover {
   backdrop-filter: blur(5px); /* Aplica el desenfoque */
 }
 
-/* Asegúrate de que el componente QuestionsSize esté por encima del fondo */
-.questions-container {
+/* Asegúrar de que el componente QuestionsSize esté por encima del fondo */
+.questions_container, .data_container{
   z-index: 9999;
 }
 

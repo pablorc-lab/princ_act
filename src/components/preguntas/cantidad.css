@@ -6,7 +6,6 @@
 }
 
 .cantidad_container {
-    z-index: 999;
     font-family: "Nunito", sans-serif;
     position: absolute;
     left: 50%;
@@ -15,8 +14,7 @@
     transform: translate(-50%, -50%);
     border-radius: 10px;
     background-color: #FFFFF0;
-    width:fit-content;
-
+    width:max-content;
     display: grid;
     gap: 50px;
 }
@@ -81,11 +79,21 @@
 
 /* Para dispositivos móviles */
 @media screen and (max-width: 960px) {
-
+    .cantidad_container {
+        max-width: 500px;
+    }
+    .cantidad_container h2 {
+        font-size: 30px;
+    }
 }
   
 /* Para pantallas de escritorio */
 @media screen and (min-width: 1200px) {
-    
+    .cantidad_container h2,
+    .cantidad_container input,
+    .input_container p {
+        font-size: 40px;
+    } 
+
 }
   

@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from 'react'
-import Preguntas from "../../data/principios.json";
+import { Link } from 'react-router-dom'; 
 import "./../resultados/resultados.css"
 import './preguntas.css';
-
 import Atomo from "../../images/atomo.png"
 import Continuar from "../../images/continuar.png"
 import Gengar from "../../images/gengar.webp"
 import Puntos from "../../images/puntos.png"
 import Cross from "../../images/cross.png"
 import Check from "../../images/check.png"
+import Casa from "../../images/logo_home.png"
+
 
 //	Este componente se encarga de mostrar los modos Quiz y Práctica
 //	`respuesta_inmediata` controla este cambio, donde será False o True respectivamente	
-export default function Quiz_preguntas({setIncorrectas, setTam_preguntas, respuesta_inmediata = false, question_size=1 }) {
+export default function Quiz_preguntas({Preguntas, setIncorrectas, setShowResult, respuesta_inmediata = false, question_size=1 }) {
 	const [preguntasMezcladas, setPreguntasMezcladas] = useState([]);
 	const [index, setIndex] = useState(0);
 	const [principio_actual, setPrincipio] = useState(null);
@@ -97,7 +98,7 @@ export default function Quiz_preguntas({setIncorrectas, setTam_preguntas, respue
 	
 		//* Si no hay mas preguntas se finaliza
 		if (index + 1 === preguntasMezcladas.length)
-			setTam_preguntas(preguntasMezcladas.length);
+			setShowResult(true);
 
 		setPrincipio(preguntasMezcladas[index + 1]);
 		setIndex(index + 1);
@@ -118,11 +119,27 @@ export default function Quiz_preguntas({setIncorrectas, setTam_preguntas, respue
 		}
 
 		else if (index >= preguntasMezcladas.length)
-			setTam_preguntas(preguntasMezcladas.length);
+			setShowResult(true);
 	};
 
 	return (
 		<div className="App">
+			<Link to="/">
+				<img
+					src={Casa}
+					alt="home logo"
+					style={{
+						position: 'absolute',
+						left: '20px',
+						top: '20px',
+						width: '90px',
+						cursor: 'pointer',
+						opacity: '0.5',
+					}}
+					onMouseOver={(e) => (e.currentTarget.style.opacity = '1')}
+					onMouseOut={(e) => (e.currentTarget.style.opacity = '0.5')}
+				/>
+			</Link>
 			<img className='Gengar' src={Gengar} alt="gengar" />
 			<img className='Puntos' src={Puntos} alt="Puntos" />
 
@@ -151,20 +168,21 @@ export default function Quiz_preguntas({setIncorrectas, setTam_preguntas, respue
 
 				{/*Papel*/}
 				{!mostrar_solucion && (
-					<div className="Papel">
+					<section className="Papel">
 						<p className='contador'> 
 							{principio_actual ? `${index + 1} / ${preguntasMezcladas.length}` : '-/-'}
 						</p>
 						<h1>
 							{principio_actual ? principio_actual.principio : "..."}
 						</h1>
-					</div>
+					</section>
 				)}
 			</div>
 
-			<div className='Respuesta' style={{ opacity: mostrar_solucion ? 0.1 : 1 }}>
-				<img id="Atomo_img" src={Atomo} alt="atomo" />
+			<section className='Respuesta' style={{backgroundColor: mostrar_solucion ? "rgba(195, 190, 237, 0.1)" :  "#c3beed"}}>
+				<img id="Atomo_img" src={Atomo} alt="atomo" style={{ opacity: mostrar_solucion ? 0.3 : 1 }}				/>
 				<input
+				 	style={{ opacity: mostrar_solucion ? 0 : 1 }}
 					type='text'
 					autoFocus
 					spellCheck="false"
@@ -178,9 +196,9 @@ export default function Quiz_preguntas({setIncorrectas, setTam_preguntas, respue
 					src={Continuar}
 					alt="continuar"
 					onClick={() => handleKeyPress({key: 'Enter'})} 
-					style={{ cursor: texto ? 'pointer' : 'not-allowed', opacity: texto ? 1 : 0.3 }}
+					style={{ cursor: (texto||mostrar_solucion) ? 'pointer' : 'not-allowed', opacity: (texto||mostrar_solucion) ? 1 : 0.3 }}
 				/>
-			</div>
+			</section>
 		</div>
 	);
 }

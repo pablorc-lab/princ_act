@@ -2,16 +2,27 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Gastly from "../images/gastly.png";
 import Bombilla from "../images/bombilla.png";
+import Libro from "../images/libro.png";
 import { infoText } from './info_text';
 import QuestionsSize from './preguntas/cantidad';
+import Apuntes from './guia/apuntes';
 import "./home.css";
 
 export default function Home() {
   const [tip_text, setTipText] = useState(null);
+  const [show_data, setShowData] = useState(false);
   const [questions_size, setQuestionsSize] = useState(false); 
 
   return (
     <>
+      <img 
+        src={Libro} 
+        alt="libro" 
+        width="50" 
+        className='libro_img'
+        onClick={() => setShowData(true)}
+      />
+
       <div className='menu'>
         <div className='gastly'>
           <img src={Gastly} alt="gastly" />
@@ -41,14 +52,19 @@ export default function Home() {
         </article>
       )}
 
-      {/* Si questions_size es true, muestra el fondo borroso y el componente QuestionsSize */}
+      {/* Mostrar fondo borroso*/}
+      {(show_data||questions_size) && (<div className="background-blur"></div>)}
+      
+      {/* Mostrar apuntes si está activado*/}
+      {show_data && (
+        <div className="data_container"> <Apuntes/> </div>
+      )}
+      
+      {/* Si questions_size es true, muestra el componente QuestionsSize */}
       {questions_size && (
-        <>
-          <div className="background-blur"></div>
-          <div className="questions-container">
-            <QuestionsSize setQuestionsSize={setQuestionsSize}/>
-          </div>
-        </>
+        <div className="questions_container">
+          <QuestionsSize setQuestionsSize={setQuestionsSize}/>
+        </div>
       )}
     </>
   );

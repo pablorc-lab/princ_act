@@ -13,9 +13,12 @@
 /*?    NOTAS CONTAINER
 /*?========================*/
 .nota_container {
+  margin: 0 100px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
   padding-top: 5vw;
+  gap: 50px;
 }
 
 .nota_container img {
@@ -59,7 +62,7 @@
 /*?========================*/
 .incorrectas_container {
 	display: grid;
-  margin: 5vw 7vw;
+  margin: 70px 100px;
   padding-bottom: 20px;
   border-radius: 20px;
   background-color: #494949;
@@ -95,11 +98,12 @@
 /*?    RESULTADOS INCORRECTAS
 /*?========================*/
 .incorrectas_text li {
-  padding: 10px 30px;
-  font-size: 22px;
+  padding: 20px 30px;
+  font-size: 25px;
   display: flex;
+  flex-wrap:wrap;
   align-items: center;
-	gap: 20px;
+	gap: 10px
 }
 
 /*? Princpio*/
@@ -110,7 +114,6 @@
 
 .principio { 
 	gap: 20px; 
-	flex-basis: 27%;
 }
 .principio span {
   font-style: italic;
@@ -122,17 +125,30 @@
 
 /*? (In)Correcta */
 .incorrecta img, .correcta img {
+  margin-left: 15px;
   width: 30px;
 }
 
 .incorrecta {
 	gap: 10px; 
 	color: #f06f79;
-	flex-basis: 34%;
 }
 
 .correcta {
 	gap: 10px; 
 	color: #96cf8f;
-	flex-basis: 34%;
+}
+
+/* Moviles*/
+@media screen and (max-width: 760px) {
+  .incorrectas_container { 
+    margin: 80px 30px; 
+  }
+}
+
+/* Para pantallas menores */
+@media screen and (max-width: 1200px) {
+  .nota_container {
+    margin-top: 60px;
+  }
 }
