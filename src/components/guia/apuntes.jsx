@@ -29,7 +29,7 @@ export default function Apuntes({ setShowData, dataFile = "principios" }) {
         width="40"
         onClick={() => { setShowData(false) }}
       />
-      <h1>{Preguntas.length} principios activos </h1>
+      <h1>{Preguntas.length} {dataFile}</h1>
 
       <ul className="apuntes_list">
         {Preguntas.map((principio, index) => (
