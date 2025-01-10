@@ -1,8 +1,25 @@
-import Preguntas from "./../../data/principios.json"
+import React, { useEffect, useState } from "react";
 import Cross from "../../images/cross_fill.webp"
 import "./apuntes.css"
 
-export default function Apuntes({ setShowData }) {
+export default function Apuntes({ setShowData, dataFile = "principios" }) {
+  const [Preguntas, setPreguntas] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        // Importa el archivo JSON según el valor de dataFile
+        const data = await import(`./../../data/${dataFile}.json`);
+        setPreguntas(data.default);
+      } 
+      catch (error) {
+        console.error("Error loading JSON file:", error);
+      }
+    }
+
+    fetchData();
+  }, [dataFile]);
+
   return (
     <section className="apuntes_container">
       <img

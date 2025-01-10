@@ -68,7 +68,7 @@ export default function Home() {
 
       {/* Mostrar apuntes si está activado*/}
       <div className={`data_container ${show_data && 'show'}`}> 
-        <Apuntes setShowData={setShowData} /> 
+        <Apuntes setShowData={setShowData}  dataFile={`${princ_mode ? "principios" : "plantas"}`}/> 
       </div>
 
       {/* Si questions_size es true, muestra el componente QuestionsSize */}
