@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkprin_act=self.webpackChunkprin_act||[]).push([[294],{294:i=>{i.exports=JSON.parse('[{"principio":"Verapamilo","tipo":"antagonista del calcio/antiarr\xedtmico","uso":""},{"principio":"Verapamilo","tipo":"antagonista del calcio/antiarr\xedtmico","uso":""},{"principio":"Verapamilo","tipo":"antagonista del calcio/antiarr\xedtmico","uso":""}]')}}]);
