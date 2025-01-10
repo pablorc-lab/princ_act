@@ -21,11 +21,11 @@ export default function Home() {
   return (
     <>
       <section className='menu_btns'>
-        <div className={`princ_act_div ${princ_mode && "show"}`} onClick={() => setPrincMode(!princ_mode)}>
+        <div className={`princ_act_div ${princ_mode && "show"}`} onClick={() => setPrincMode(true)}>
           <img src={Princ_act} alt="Princ_act"/>
           <span>Principios activos</span>
         </div>
-        <div className={`planta_div ${!princ_mode && "show"}`} onClick={() => setPrincMode(!princ_mode)}>
+        <div className={`planta_div ${!princ_mode && "show"}`} onClick={() => setPrincMode(false)}>
           <img src={Planta_menu} alt="Planta"/>
           <span>Fitoterapia</span>
         </div>
@@ -36,13 +36,12 @@ export default function Home() {
         <img src={Libro} alt="libro" width="50" onClick={() => setShowData(true)} />
       </section>
 
-
-      <section className='menu'>
+      <main className='menu'>
         <div className='gastly'>
           <img src={`${princ_mode ? Gastly : Mandragora}`} alt="gastly" />
         </div>
 
-        <div className={`botones ${!princ_mode && "plant"}`}>
+        <div className={`botones ${!princ_mode ? "plant" : "princ_act"}`}>
           <Link to="/practicar">
             <button
               onMouseOver={() => setTipText(infoText.practicar)}
@@ -56,7 +55,7 @@ export default function Home() {
             onClick={() => setQuestionsSize(true)}
           > Quiz </button>
         </div>
-      </section>
+      </main>
 
       {/* Mostrar tip si se hace hover en algún boton */}
       <article className={`tip ${tip_text && 'show'}`}>
