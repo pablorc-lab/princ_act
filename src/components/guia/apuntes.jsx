@@ -31,7 +31,7 @@ export default function Apuntes({ setShowData, dataFile = "principios" }) {
       />
       <h1>{Preguntas.length} {dataFile}</h1>
 
-      <ul className="apuntes_list">
+      <ul className={`apuntes_list ${dataFile}`}>
         {Preguntas.map((principio, index) => (
           <li key={index}>
             <h2> {index + 1}. {principio.principio}</h2>

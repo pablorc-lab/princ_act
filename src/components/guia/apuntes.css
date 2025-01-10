@@ -65,28 +65,22 @@
 	gap: 10px;
 	list-style: none;
 }
-
 .apuntes_list li p {
 	font-size: 22px;
 	color: rgb(57, 57, 57);
 }
-
 .apuntes_list li:nth-child(odd) {
 	background-color: #e3d7ff;
-	/* Gris claro */
 	padding: 10px;
 	border-radius: 5px;
-	/* Bordes redondeados */
 }
-
 .apuntes_list li:nth-child(even) {
 	background-color: #c9b4ff;
-	/* Gris oscuro */
 	padding: 10px;
 	border-radius: 5px;
-	/* Bordes redondeados */
 }
-
+.apuntes_list.plantas li:nth-child(odd) {background-color: rgb(138, 230, 138);;}
+.apuntes_list.plantas li:nth-child(even) {background-color: rgb(185, 236, 185);}
 
 /* Para dispositivos móviles */
 @media screen and (max-width: 960px) {
