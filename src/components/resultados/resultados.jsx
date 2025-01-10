@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'; 
 import "./resultados.css"
-import Dot from "../../images/dot.png"
-import Cross from "../../images/cross.png"
-import Check from "../../images/check.png"
-import Retry from "../../images/retry.png"
-import Casa from "../../images/logo_home.png"
+import Dot from "../../images/dot.webp"
+import Cross from "../../images/cross.webp"
+import Check from "../../images/check.webp"
+import Retry from "../../images/retry.webp"
+import Casa from "../../images/logo_home.webp"
 
 export default function Final_result({ tam_preguntas, incorrectas, handleReiniciar }) {
 	const correctas = tam_preguntas - incorrectas.length;

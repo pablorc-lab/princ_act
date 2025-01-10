@@ -1,79 +1,102 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
 
 #cross_img {
-    cursor: pointer;
-    width: 65px;
-    position: absolute; 
-    top: -25px; 
-    left: -30px; 
+	cursor: pointer;
+	width: 65px;
+	position: absolute;
+	top: -25px;
+	left: -30px;
 }
+
 #cross_img:hover {
-    filter: brightness(1.5);
+	filter: brightness(0.8);
 }
+
 .apuntes_container {
-    box-shadow: 0 0 10px black;
-    border-radius: 15px;
-    font-family: "Nunito", sans-serif;
-    background-color: #FFFFF0;
-    width: max-content;
-    max-width: 700px;
-    position: absolute;
-    left: calc(50% + 10px);
-    top: 50%;
-    padding: 25px 0;
-    transform: translate(-50%, -50%);
-    max-height: 90vh;
+	box-shadow: 0 0 10px black;
+	border-radius: 15px;
+	font-family: "Nunito", sans-serif;
+	background-color: #FFFFF0;
+	width: max-content;
+	max-width: 700px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	padding: 25px 0;
+	transform: translate(-50%, -50%);
+	max-height: 90vh;
 }
 
 .apuntes_container h1 {
-    text-align: center;
-    font-size: 35px;
-    padding-bottom: 25px;
+	text-align: center;
+	font-size: 35px;
+	padding-bottom: 25px;
 }
 
 .apuntes_list {
-    max-height: calc(90vh - 100px);
-    overflow-y: scroll;
-    padding-left: 25px;
-    padding-right: 20px;
-    padding-bottom: 20px;
+	max-height: calc(90vh - 100px);
+	overflow-y: scroll;
+	padding-left: 25px;
+	padding-right: 20px;
+	padding-bottom: 20px;
 }
-.apuntes_list::-webkit-scrollbar { 
-    width: 20px;     
+
+.apuntes_list::-webkit-scrollbar {
+	width: 20px;
 }
-.apuntes_list::-webkit-scrollbar-button { padding: 5px;}
+
+.apuntes_list::-webkit-scrollbar-button {
+	padding: 5px;
+}
+
 .apuntes_list::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.3);
-    border-radius: 15px;
+	background-color: rgba(0, 0, 0, 0.3);
+	border-radius: 15px;
 }
+
 .apuntes_list::-webkit-scrollbar-track {
-    background-color: rgba(0, 0, 0, 0.15);
-    border-radius: 15px; /* Asegura que la pista también tenga bordes redondeados */
+	background-color: rgba(0, 0, 0, 0.15);
+	border-radius: 15px;
+	/* Asegura que la pista también tenga bordes redondeados */
 }
+
 .apuntes_list {
-    display: grid;
-    gap: 10px;
-    list-style: none;
+	display: grid;
+	gap: 10px;
+	list-style: none;
 }
-.apuntes_list li p{
-    font-size: 22px;
-    color: rgb(57, 57, 57);
+
+.apuntes_list li p {
+	font-size: 22px;
+	color: rgb(57, 57, 57);
 }
+
 .apuntes_list li:nth-child(odd) {
-    background-color: #e3d7ff; /* Gris claro */
-    padding: 10px;
-    border-radius: 5px; /* Bordes redondeados */
+	background-color: #e3d7ff;
+	/* Gris claro */
+	padding: 10px;
+	border-radius: 5px;
+	/* Bordes redondeados */
 }
+
 .apuntes_list li:nth-child(even) {
-    background-color: #c9b4ff; /* Gris oscuro */
-    padding: 10px;
-    border-radius: 5px; /* Bordes redondeados */
+	background-color: #c9b4ff;
+	/* Gris oscuro */
+	padding: 10px;
+	border-radius: 5px;
+	/* Bordes redondeados */
 }
 
 
 /* Para dispositivos móviles */
 @media screen and (max-width: 960px) {
-    .apuntes_container{
-        max-width: 550px;
-    }
+	.apuntes_container {
+		max-width: 90%;
+	}
+
+	#cross_img {
+		width: 50px;
+		top: -20px;
+		left: -20px;
+	}
 }

@@ -80,7 +80,7 @@
 /* Para dispositivos móviles */
 @media screen and (max-width: 960px) {
     .cantidad_container {
-        max-width: 500px;
+        max-width: 450px;
     }
     .cantidad_container h2 {
         font-size: 30px;

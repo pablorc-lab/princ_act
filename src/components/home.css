@@ -4,6 +4,40 @@
   background-color: #2e2e30;
 }
 
+/*? Cambiar entre un modo u otro*/
+.menu_btns img { 
+  aspect-ratio: 1 / 1;
+  width: 50px; 
+  margin: 0 10px;
+}
+
+.menu_btns {
+  font-family: "Nunito", sans-serif;
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  display: grid;
+  gap: 10px;
+}
+.menu_btns div {
+  cursor: pointer;
+  padding: 15px;
+  width: max-content;
+  display: flex;
+  align-items: center;
+  height: 85px;
+  border-radius: 50px;
+  font-size: 20px;
+  font-weight: 600;
+  opacity: 0.5;
+  transition: opacity 0.3s ease-in-out, background-color 0.2s ease-in-out;
+}
+.menu_btns div.show { opacity: 1;}
+
+.planta_div:hover, .planta_div.show { background-color: #bdecb6 ;}
+.princ_act_div:hover, .princ_act_div.show { background-color: rgb(137, 133, 182);}
+
+/*? Seccion de apuntes*/
 .libro_img {
   font-family: "Nunito", sans-serif;
   display: flex;
@@ -13,16 +47,18 @@
   right: 30px;
   color: aliceblue;
   gap: 15px;
+  user-select: none;
 }
 .libro_img img{ 
   cursor: pointer;
-  transition: 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
   width: 100px;
   aspect-ratio: 1 / 1;
 }
-.libro_img:hover img{
+.libro_img img:hover{
   transform: scale(1.2);
 }
+
 .menu {
   user-select:none;
   position: absolute;
@@ -36,23 +72,21 @@
   align-items: center;
   padding: 30px;
 }
+
 .gastly {
   display: flex;
   justify-content: center;
   animation: moveAndRotate 1.5s alternate infinite; 
-
 }
 .gastly img{
   width: 250px;
   height: auto;
   aspect-ratio: 1 / 1;
 }
-
 @keyframes moveAndRotate {
   0% { opacity: 0.1;}
   100% { opacity: 1;}
 }
-
 
 .botones {
   display: flex;
@@ -61,12 +95,11 @@
   gap: 10vw;
 }
 
-button { 
+.botones button { 
   font-family: "Nunito", sans-serif;
   cursor: pointer;
   border: none;
-
-  background-color: rgba(137, 133, 182, 0.8); /* Color con transparencia */
+  background-color: rgba(137, 133, 182, 0.8); 
   font-size: 35px;
   font-weight: 700;
   color: white;
@@ -76,26 +109,32 @@ button {
   border-radius: 20px;
   box-shadow: 0 0 10px rgba(255, 255, 255,0.4);
 }
-
-button:hover {
-  background-color: rgb(137, 133, 182); /* Color con transparencia */
+.botones.plant button{ background-color: rgba(189, 236, 182, 0.8);}
+.botones button:hover {
+  background-color: rgb(137, 133, 182); 
   transform: scale(1.1);
   box-shadow: 0 0 15px rgba(137, 131, 199,1);
 }
 
 .tip {
-  transition: 1s ease-in-out;
+  transition: transform 0.3s;
   display: flex;
-  align-items:  start;
+  opacity: 0;         
+  align-items: start;
   border-radius: 10px;
   padding: 15px;
+  margin-right: 30px;
   font-size: 25px;
   position: absolute;
   background-color: whitesmoke;
+  transform: translateY(-100%);
   top: 30px;
   left: 30px;
 }
-
+.tip.show {
+  transform: translateY(0);
+  opacity: 1;          /* Lo hace completamente opaco */
+}
 .tip p {
   font-family: "Nunito", sans-serif;
   max-width: 70vw;
@@ -104,8 +143,9 @@ button:hover {
   margin-right: 15px;
   width: 60px;
   aspect-ratio: 1/1;
-}
-
+  opacity: 0;
+} 
+.tip.show img {opacity: 1;}
 
 .background-blur {
   position: absolute;
@@ -117,28 +157,43 @@ button:hover {
 }
 
 /* Asegúrar de que el componente QuestionsSize esté por encima del fondo */
-.questions_container, .data_container{
-  z-index: 9999;
+.questions_container, .data_container {
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease-in;
+}
+.questions_container.show, .data_container.show {
+  opacity: 1;
+  visibility: visible;
 }
 
 /* Para dispositivos móviles */
 @media screen and (max-width: 960px) {
-  .libro_img {font-size: 15px;}
+  .libro_img {font-size: 0;}
   .libro_img img{ 
     width: 75px;
   }
 
-  .menu {gap: 80px;
+  .menu {
+    gap: 50px;
+    padding-top: 120px;
   }
   .botones {
     flex-direction: column;
-    gap: 80px;
+    gap: 50px;
   }
   .tip p {  max-width: 70vw}
 }
 
 /* Para pantallas de escritorio */
 @media screen and (min-width: 1200px) {
+  
+  .menu_btns {
+    left: 25px;
+    top: 15px;
+    gap: 15px;
+  }
   .gastly img{
     width: 300px;
     height: auto;

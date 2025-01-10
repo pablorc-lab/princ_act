@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./cantidad.css"
-import Cancel from "../../images/menu_cross.png"
-import Advance from "../../images/menu_check.png"
+import Cancel from "../../images/menu_cross.webp"
+import Advance from "../../images/menu_check.webp"
 import Preguntas from "../../data/principios.json"
 import Quiz from '../quiz';
 

@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'; 
 import "./../resultados/resultados.css"
 import './preguntas.css';
-import Atomo from "../../images/atomo.png"
-import Continuar from "../../images/continuar.png"
+import Atomo from "../../images/atomo.webp"
+import Continuar from "../../images/continuar.webp"
 import Gengar from "../../images/gengar.webp"
 import Puntos from "../../images/puntos.png"
-import Cross from "../../images/cross.png"
-import Check from "../../images/check.png"
-import Casa from "../../images/logo_home.png"
+import Cross from "../../images/cross.webp"
+import Check from "../../images/check.webp"
+import Casa from "../../images/logo_home.webp"
 
 
 //	Este componente se encarga de mostrar los modos Quiz y Práctica
