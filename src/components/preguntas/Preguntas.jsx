@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'; 
+import { Link, useParams } from 'react-router-dom'; 
 import "./../resultados/resultados.css"
 import './preguntas.css';
 import Atomo from "../../images/atomo.webp"
 import Continuar from "../../images/continuar.webp"
 import Gengar from "../../images/gengar.webp"
+import Funko_mandragora from "../../images/funko_mandragora.webp"
+import Planta from "../../images/planta_input_question.png"
 import Puntos from "../../images/puntos.png"
+import Enredadera from "../../images/enredaderas.png"
 import Cross from "../../images/cross.webp"
 import Check from "../../images/check.webp"
 import Casa from "../../images/logo_home.webp"
@@ -13,7 +16,8 @@ import Casa from "../../images/logo_home.webp"
 
 //	Este componente se encarga de mostrar los modos Quiz y Práctica
 //	`respuesta_inmediata` controla este cambio, donde será False o True respectivamente	
-export default function Quiz_preguntas({Preguntas, setIncorrectas, setShowResult, respuesta_inmediata = false, question_size=1 }) {
+export default function Quiz_preguntas({Preguntas, setIncorrectas, setShowResult, respuesta_inmediata = false, question_size=1, tipoDatos}) {
+	const { type } = useParams(); // Accede al tipo del enlace
 	const [preguntasMezcladas, setPreguntasMezcladas] = useState([]);
 	const [index, setIndex] = useState(0);
 	const [principio_actual, setPrincipio] = useState(null);
@@ -32,7 +36,7 @@ export default function Quiz_preguntas({Preguntas, setIncorrectas, setShowResult
 		if(!respuesta_inmediata){
 			setPreguntasMezcladas(preguntasAleatorias.slice(0, question_size)) 
 		}
-	}, []);
+	}, [Preguntas]);
 
 	//*Funciones para controlar los estados
 	const verificarRespuesta = () => {
@@ -123,7 +127,7 @@ export default function Quiz_preguntas({Preguntas, setIncorrectas, setShowResult
 	};
 
 	return (
-		<div className="App">
+		<div className={`App ${tipoDatos}`}>
 			<Link to="/">
 				<img
 					src={Casa}
@@ -140,8 +144,12 @@ export default function Quiz_preguntas({Preguntas, setIncorrectas, setShowResult
 					onMouseOut={(e) => (e.currentTarget.style.opacity = '0.5')}
 				/>
 			</Link>
-			<img className='Gengar' src={Gengar} alt="gengar" />
-			<img className='Puntos' src={Puntos} alt="Puntos" />
+			<img className='Gengar' src={`${tipoDatos === "principios" ? Gengar : Funko_mandragora}`} alt="gengar" />
+			<img 
+				className={`${tipoDatos === "principios" ? "puntos" : "enredadera"}`} 
+				src={`${tipoDatos === "principios" ? Puntos : Enredadera}`} 
+				alt="Puntos" 
+				/>
 
 			<div className='Papel_container'>
 				{/*Solucion inmediata*/}
@@ -168,7 +176,7 @@ export default function Quiz_preguntas({Preguntas, setIncorrectas, setShowResult
 
 				{/*Papel*/}
 				{!mostrar_solucion && (
-					<section className="Papel">
+					<section className={`Papel ${tipoDatos}`}>
 						<p className='contador'> 
 							{principio_actual ? `${index + 1} / ${preguntasMezcladas.length}` : '-/-'}
 						</p>
@@ -179,9 +187,10 @@ export default function Quiz_preguntas({Preguntas, setIncorrectas, setShowResult
 				)}
 			</div>
 
-			<section className='Respuesta' style={{backgroundColor: mostrar_solucion ? "rgba(195, 190, 237, 0.1)" :  "#c3beed"}}>
-				<img id="Atomo_img" src={Atomo} alt="atomo" style={{ opacity: mostrar_solucion ? 0.3 : 1 }}				/>
+			<section className={`Respuesta ${tipoDatos}`} style={{backgroundColor: mostrar_solucion && "rgba(195, 190, 237, 0.1)"}}>
+				<img id="Atomo_img" src={`${tipoDatos === "principios" ? Atomo : Planta}`} alt="atomo" style={{ opacity: mostrar_solucion ? 0.3 : 1 }}				/>
 				<input
+
 				 	style={{ opacity: mostrar_solucion ? 0 : 1 }}
 					type='text'
 					autoFocus

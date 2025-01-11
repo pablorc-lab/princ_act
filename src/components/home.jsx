@@ -42,8 +42,8 @@ export default function Home() {
         </div>
 
         <div className={`botones ${!princ_mode ? "plant" : "princ_act"}`}>
-          <Link to="/practicar">
-            <button
+          <Link to={`/practicar/${princ_mode ? 'principios' : 'plantas'}`}>
+          <button
               onMouseOver={() => setTipText(infoText.practicar)}
               onMouseOut={() => setTipText(null)}
             >Practicar</button>
@@ -68,12 +68,12 @@ export default function Home() {
 
       {/* Mostrar apuntes si está activado*/}
       <div className={`data_container ${show_data && 'show'}`}> 
-        <Apuntes setShowData={setShowData}  dataFile={`${princ_mode ? "principios" : "plantas"}`}/> 
+        <Apuntes setShowData={setShowData} dataFile={`${princ_mode ? "principios" : "plantas"}`}/> 
       </div>
 
       {/* Si questions_size es true, muestra el componente QuestionsSize */}
       <div className={`questions_container ${questions_size && 'show'}`}>
-        <QuestionsSize setQuestionsSize={setQuestionsSize} />
+        <QuestionsSize setQuestionsSize={setQuestionsSize} dataFile={`${princ_mode ? "principios" : "plantas"}`}/>
       </div>
     </>
   );
