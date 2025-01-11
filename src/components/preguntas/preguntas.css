@@ -4,11 +4,9 @@
   background-color: #63607d;
   padding: 7vw 0;
   height: 100%;
-  display: flex;
-  flex-direction: column;  
+  display: grid;
   justify-content: center;
-  align-items: center;
-  gap: 80px;
+  align-content: center;
 }
 
 .Gengar {
@@ -36,11 +34,15 @@
 /*?     PAPEL 
 /*?==============*/ 
 .Papel_container {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
   width: calc(90%);
   font-family: "Nunito", sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 80px;
 }
 
 .Papel_solt {
@@ -182,10 +184,10 @@
 
 /* Moviles*/
 @media screen and (max-width: 760px) {
-  .App {gap: 70px;}
   .Papel {
     min-width: 450px;
     height: 225px;
+    margin-bottom: 70px;
   }
   .Papel h1 {font-size: 50px;}
 
@@ -204,10 +206,10 @@
 
 /* Para pantallas menores */
 @media screen and (min-width: 761px) and (max-width: 1200px) {
-  .App {gap: 70px;}
   .Papel {
     min-width: 500px;
     height: 255px;
+    margin-bottom: 70px;
   }
 
   .Papel h1 {font-size: 60px;}

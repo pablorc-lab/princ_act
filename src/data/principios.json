@@ -68,7 +68,7 @@
   {"principio": "Jarabe de ipecacuana", "tipo": "emético", "uso": "(vomitivo)"},
   {"principio": "Orlistat", "tipo": "inhibidor de las lipasas digestivas", "uso": "(no se absorben las grasas)"},
   {"principio": "Bupropion", "tipo": "antidepresivo", "uso": "(inhiben el apetito)"},
-  {"principio": "Dimenhidrinato", "tipo": "antihemético", "uso": "(para no vomitar)"},
+  {"principio": "Dimenhidrinato", "tipo": "antiemético", "uso": "(para no vomitar)"},
   {"principio": "Glipizida", "tipo": "antidiabético", "uso": "(tipo 2)"},
   {"principio": "Gliclazida", "tipo": "antidiabético", "uso": "(tipo 2)"},
   {"principio": "Carbón activo", "tipo": "astringente", "uso": "(antidiarréico)"},
