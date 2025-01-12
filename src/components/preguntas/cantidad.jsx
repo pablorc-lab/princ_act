@@ -67,7 +67,7 @@ export default function QuestionsSize({ setQuestionsSize, dataFile = "principios
         <img
           src={Advance}
           className={validSize ? "check_allow" : "check_deny"}
-          onClick={() => validSize && navigate('/quiz', { state: { cantidad_preguntas: number } })}
+          onClick={() => validSize && navigate(`/quiz/${dataFile}`, { state: { cantidad_preguntas: number } })}
         />
       </div>
     </article>

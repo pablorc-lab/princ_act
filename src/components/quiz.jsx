@@ -18,11 +18,9 @@ export default function Quiz({respuesta_inmediata=false}){
   useEffect(() => {
     async function fetchData() {
       try {
-        // Importa el archivo JSON dinámicamente según 'type'
         const data = await import(`../data/${type}.json`);
-        setPreguntas(data.default); // Guarda los datos en el estado
-      } 
-      catch (error) {
+        setPreguntas(data.default); 
+      } catch (error) {
         console.error("Error cargando el archivo JSON para Quiz:", error);
       }
     }
