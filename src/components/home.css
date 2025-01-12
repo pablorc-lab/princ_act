@@ -81,16 +81,11 @@
 .gastly {
   display: flex;
   justify-content: center;
-  animation: moveAndRotate 1.5s alternate infinite; 
 }
 .gastly img{
   width: 250px;
   height: auto;
   aspect-ratio: 1 / 1;
-}
-@keyframes moveAndRotate {
-  0% { opacity: 0.1;}
-  100% { opacity: 1;}
 }
 
 .botones {
