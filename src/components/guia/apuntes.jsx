@@ -21,7 +21,7 @@ export default function Apuntes({ setShowData, dataFile = "principios" }) {
   }, [dataFile]);
 
   return (
-    <section className="apuntes_container">
+    <section className={`apuntes_container ${dataFile}`}>
       <img
         id="cross_img"
         src={Cross}
@@ -31,7 +31,7 @@ export default function Apuntes({ setShowData, dataFile = "principios" }) {
       />
       <h1>{Preguntas.length} {dataFile}</h1>
 
-      <ul className={`apuntes_list ${dataFile}`}>
+      <ul className="apuntes_list">
         {Preguntas.map((principio, index) => (
           <li key={index}>
             <h2> {index + 1}. {principio.principio}</h2>

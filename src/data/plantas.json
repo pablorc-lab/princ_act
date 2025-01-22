@@ -8,5 +8,10 @@
   {"principio": "Digital", "tipo": "cardioterapia ", "uso": "(corazón)"},
   {"principio": "Estragón", "tipo": "estimulante del apetito", "uso": ""},
   {"principio": "Cardo mariano", "tipo": "protector hepatico", "uso": ""},
-  {"principio": "Nuez moscada", "tipo": "antidiarreica", "uso": ""}
+  {"principio": "Nuez moscada", "tipo": "antidiarreica", "uso": ""},
+  {"principio": "Hinojo", "tipo": "gases", "uso": ""},
+  {"principio": "Cáscara sagrada", "tipo": "laxante", "uso": ""},
+  {"principio": "Té verde", "tipo": "obesidad", "uso": ""},
+  {"principio": "Jengibre", "tipo": "antiemético", "uso": ""},
+  {"principio": "Regaliz", "tipo": "antiulceroso", "uso": ""}
 ]

@@ -11,7 +11,7 @@
 }
 
 .App.plantas {
-  background-color: #4E6F48;
+  background-color: #486642;
 }
 
 .Gengar {
@@ -156,7 +156,7 @@
   width: 850px;
 }
 
-.Respuesta.plantas {background-color: #79b972;}
+.Respuesta.plantas {background-color: #92d38a;}
 .Respuesta.plantas input {
   caret-color: rgb(22, 92, 39);
 }

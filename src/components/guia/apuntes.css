@@ -79,8 +79,8 @@
 	padding: 10px;
 	border-radius: 5px;
 }
-.apuntes_list.plantas li:nth-child(odd) {background-color: rgb(150, 226, 150);;}
-.apuntes_list.plantas li:nth-child(even) {background-color: rgb(197, 233, 197);}
+.apuntes_container.plantas ul li:nth-child(odd) {background-color: rgb(150, 226, 150);;}
+.apuntes_container.plantas ul li:nth-child(even) {background-color: rgb(197, 233, 197);}
 
 /* Para dispositivos móviles */
 @media screen and (max-width: 960px) {
@@ -92,5 +92,11 @@
 		width: 50px;
 		top: -20px;
 		left: -20px;
+	}
+}
+
+@media screen and (min-width: 961px) {
+	.apuntes_container.plantas {
+		width: 700px;
 	}
 }
