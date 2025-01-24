@@ -13,5 +13,10 @@
   {"principio": "Cáscara sagrada", "tipo": "laxante", "uso": ""},
   {"principio": "Té verde", "tipo": "obesidad", "uso": ""},
   {"principio": "Jengibre", "tipo": "antiemético", "uso": ""},
-  {"principio": "Regaliz", "tipo": "antiulceroso", "uso": ""}
+  {"principio": "Regaliz", "tipo": "antiulceroso", "uso": ""},
+  {"principio": "Ginseng", "tipo": "reconstituyente", "uso": ""},
+  {"principio": "Estevia", "tipo": "diabetes", "uso": ""},
+  {"principio": "Karité", "tipo": "emoliente", "uso": "(suaviza/hidrata)"},
+  {"principio": "Soja", "tipo": "fitoestrógenos", "uso": "(menopausia)"},
+  {"principio": "Brezo", "tipo": "infecciones urinarias", "uso": ""}
 ]

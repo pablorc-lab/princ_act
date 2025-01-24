@@ -17,7 +17,6 @@ import Casa from "../../images/logo_home.webp"
 //	Este componente se encarga de mostrar los modos Quiz y Práctica
 //	`respuesta_inmediata` controla este cambio, donde será False o True respectivamente	
 export default function Quiz_preguntas({Preguntas, setIncorrectas, setShowResult, respuesta_inmediata = false, question_size=1, tipoDatos}) {
-	const { type } = useParams(); // Accede al tipo del enlace
 	const [preguntasMezcladas, setPreguntasMezcladas] = useState([]);
 	const [index, setIndex] = useState(0);
 	const [principio_actual, setPrincipio] = useState(null);
@@ -27,7 +26,7 @@ export default function Quiz_preguntas({Preguntas, setIncorrectas, setShowResult
 
 	//*Desordenar las preguntas al cargar el componente
 	useEffect(() => {
-		document.title = (!respuesta_inmediata ? "Quiz " : "Practicar ") + "principios activos";
+		document.title = (!respuesta_inmediata ? "Quiz " : "Practicar ") + `${tipoDatos}`;
 
 		const preguntasAleatorias = [...Preguntas].sort(() => Math.random() - 0.5);
 		setPreguntasMezcladas(preguntasAleatorias);
