@@ -47,8 +47,8 @@
   justify-content: center;
   margin-bottom: 80px;
 }
-
 .Papel_solt {
+  position: relative;
   height: 305px; 
   min-width: 610px;
   z-index: 99;
@@ -61,7 +61,6 @@
   padding: 20px;
   box-shadow: 0 0 10px black;
 }
-
 .Papel_solt h2 {
   padding: 10px 0;
   text-align: center;
@@ -76,6 +75,7 @@
   justify-content: center; /* Centra verticalmente los elementos dentro del contenedor */
   gap: 10px; 
   height: 100%; 
+  margin-right: 30px;
 }
 .incorrecta, .correcta {
   font-size: 25px;
@@ -138,6 +138,54 @@
   border-radius: 50%;
   padding-left: 20px;
   font-size: 25px;
+}
+
+/*? Boton para cambiar la respuesta a true*/
+.thumb {
+  user-select: none;
+  cursor: pointer;
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  border-radius: 50%;
+  padding: 7px;
+  display: flex; /* Centra la imagen dentro del contenedor */
+  justify-content: center;
+  align-items: center;
+  filter: brightness(0.4);
+  transition: all 0.1s ease-in-out;
+}
+.thumb img{ width: 40px;}
+.thumb:hover{
+  background-color: rgb(99, 99, 99);
+  filter: none;
+}
+.thumb p {
+  position: absolute;
+  background-color: beige;
+  color: black;
+  text-align: center;
+  width: 240px;
+  height: max-content;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 17px;
+  border-radius: 6px;
+  padding: 10px;
+}
+
+.thumb p::before {
+  content: '';
+  position: absolute;
+  bottom: -10px; 
+  left: 50%; 
+  transform: translateX(-50%); 
+  width: 0; 
+  height: 0; 
+  border-style: solid;
+  border-width: 10px 10px 0 10px; /* Forma del pico */
+  border-color: beige transparent transparent transparent; 
 }
 
 
@@ -204,13 +252,29 @@
 }
 
 /* Moviles*/
+@media screen and (max-width: 760px) {
+  .thumb p { 
+    top: 70px;
+    left: -100%;
+  }
+  .thumb p::before {
+    bottom: 0;
+    top: -10px;
+    left: 90%;
+    transform: translateX(-100%);
+    border-width: 0 10px 10px 10px; /* Forma del pico */
+    border-color: transparent transparent beige transparent; 
+  }
+}
+
+
 @media screen and (max-width: 600px) {
-  .Papel {
+  .Papel , .Papel_solt{
     min-width: 450px;
     height: 225px;
     margin-bottom: 20px;
   }
-  .Papel h1 {font-size: 40px;}
+  .Papel h1,.Papel_solt h1 {font-size: 40px;}
 
   .Respuesta { max-width: 480px;}
   .Respuesta input {
@@ -225,12 +289,12 @@
 }
 
 @media screen and (min-width: 601px) and (max-width: 760px) {
-  .Papel {
+  .Papel, .Papel_solt {
     min-width: 450px;
     height: 225px;
     margin-bottom: 40px;
   }
-  .Papel h1 {font-size: 45px;}
+  .Papel h1, .Papel_solt h1 {font-size: 45px;}
 
   .Respuesta {max-width: 600px;}
   .Respuesta input {
@@ -245,13 +309,13 @@
 
 /* Para pantallas menores */
 @media screen and (min-width: 761px) and (max-width: 1200px) {
-  .Papel {
+  .Papel, .Papel_solt {
     min-width: 500px;
     height: 255px;
     margin-bottom: 70px;
   }
 
-  .Papel h1 {font-size: 55px;}
+  .Papel h1, .Papel_solt h1 {font-size: 55px;}
 
   .Respuesta {max-width: 700px;}
   .Respuesta input {

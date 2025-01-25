@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link, useParams } from 'react-router-dom'; 
-import "./../resultados/resultados.css"
+import { Link,  } from 'react-router-dom'; 
 import './preguntas.css';
 import Atomo from "../../images/atomo.webp"
 import Continuar from "../../images/continuar.webp"
@@ -12,7 +11,7 @@ import Enredadera from "../../images/enredaderas.png"
 import Cross from "../../images/cross.webp"
 import Check from "../../images/check.webp"
 import Casa from "../../images/logo_home.webp"
-
+import Thumb from "../../images/thumb_up.svg"
 
 //	Este componente se encarga de mostrar los modos Quiz y Práctica
 //	`respuesta_inmediata` controla este cambio, donde será False o True respectivamente	
@@ -23,6 +22,7 @@ export default function Quiz_preguntas({Preguntas, setIncorrectas, setShowResult
 	const [texto, setTexto] = useState('');
 	const [resultados_actuales, setResultados_act] = useState([null, null, null]);  //*[0]=principio [1]=incorrecta [2]=correcta
 	const [mostrar_solucion, setMostrar_solucion] = useState(false);
+	const [reviseAnswer, setResiveAnswer] = useState(false);
 
 	//*Desordenar las preguntas al cargar el componente
 	useEffect(() => {
@@ -100,7 +100,7 @@ export default function Quiz_preguntas({Preguntas, setIncorrectas, setShowResult
 		}
 	
 		//* Si no hay mas preguntas se finaliza
-		if (index + 1 === preguntasMezcladas.length)
+		if (index + 1 === preguntasMezcladas.length && (!respuesta_inmediata && !mostrar_solucion))
 			setShowResult(true);
 
 		setPrincipio(preguntasMezcladas[index + 1]);
@@ -120,11 +120,29 @@ export default function Quiz_preguntas({Preguntas, setIncorrectas, setShowResult
 				setTexto("");
 			}
 		}
-
 		else if (index >= preguntasMezcladas.length)
 			setShowResult(true);
 	};
 
+	//* Esta función cambia la respuesta actual como correcta.
+	const handleResiveAnswer = () => {
+		// Eliminar la incorrecta actual si verdaderamente está mal
+		if (resultados_actuales[1] !== resultados_actuales[2]) {
+			// Verificar si tiene uso añadido el principio actual
+				setResultados_act((prevResultados) => {
+				const updateResultados = [...prevResultados];
+				updateResultados[1] = updateResultados[2];
+				return updateResultados;
+			});
+			
+			setIncorrectas((prevIncorrectas) => {
+				const updatedIncorrectas = [...prevIncorrectas];
+				updatedIncorrectas.pop();  
+				return updatedIncorrectas; 
+			});
+		}
+	};
+	
 	return (
 		<div className={`App ${tipoDatos}`}>
 			<Link to="/">
@@ -150,25 +168,29 @@ export default function Quiz_preguntas({Preguntas, setIncorrectas, setShowResult
 				alt="Puntos" 
 				/>
 
-			<div className='Papel_container'>
+			<section className='Papel_container'>
 				{/*Solucion inmediata*/}
 				{respuesta_inmediata && mostrar_solucion && (
 					<div className='Papel_solt'>
 						<h2>{resultados_actuales[0]}</h2>
 
-						<div className='solutions_container'>
-							<div className={resultados_actuales[1] ? 'incorrecta' : 'correcta'}>
+						<article className='solutions_container'>
+							<div className={resultados_actuales[1]!== resultados_actuales[2] ? 'incorrecta' : 'correcta'}>
 								<img 
-									src={resultados_actuales[1] ? Cross : Check} 
-									alt={resultados_actuales[1] ? 'cross' : 'check'} 
+									src={resultados_actuales[1]!==resultados_actuales[2] ? Cross : Check} 
+									alt={resultados_actuales[1]!==resultados_actuales[2] ? 'cross' : 'check'} 
 								/>
 								<p>{resultados_actuales[1] || resultados_actuales[2]}</p>
 							</div>
-
 							<div className='correcta'>
 								<img src={Check} alt="check" />
 								<p>{resultados_actuales[2]}</p>
 							</div>
+						</article>
+
+						<div class="thumb" onMouseEnter={() => setResiveAnswer(!reviseAnswer)} onMouseLeave={() => setResiveAnswer(!reviseAnswer)}>
+							<img src={Thumb} alt='thunb' width="50px" onClick={handleResiveAnswer}/>
+							{reviseAnswer && <p>Si tu respuesta es correcta pulsa para corregir</p>}
 						</div>
 					</div>
 				)}
@@ -184,7 +206,7 @@ export default function Quiz_preguntas({Preguntas, setIncorrectas, setShowResult
 						</h1>
 					</section>
 				)}
-			</div>
+			</section>
 
 			<section className={`Respuesta ${tipoDatos}`} style={{backgroundColor: mostrar_solucion && "rgba(195, 190, 237, 0.1)"}}>
 				<img id="Atomo_img" src={`${tipoDatos === "principios" ? Atomo : Planta}`} alt="atomo" style={{ opacity: mostrar_solucion ? 0.3 : 1 }}				/>
