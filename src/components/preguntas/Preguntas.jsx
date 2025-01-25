@@ -127,11 +127,11 @@ export default function Quiz_preguntas({Preguntas, setIncorrectas, setShowResult
 	//* Esta función cambia la respuesta actual como correcta.
 	const handleResiveAnswer = () => {
 		// Eliminar la incorrecta actual si verdaderamente está mal
-		if (resultados_actuales[1] !== resultados_actuales[2]) {
+		if (resultados_actuales[1]) {
 			// Verificar si tiene uso añadido el principio actual
-				setResultados_act((prevResultados) => {
+			setResultados_act((prevResultados) => {
 				const updateResultados = [...prevResultados];
-				updateResultados[1] = updateResultados[2];
+				updateResultados[1] = null
 				return updateResultados;
 			});
 			
@@ -175,10 +175,10 @@ export default function Quiz_preguntas({Preguntas, setIncorrectas, setShowResult
 						<h2>{resultados_actuales[0]}</h2>
 
 						<article className='solutions_container'>
-							<div className={resultados_actuales[1]!== resultados_actuales[2] ? 'incorrecta' : 'correcta'}>
+							<div className={resultados_actuales[1] ? 'incorrecta' : 'correcta'}>
 								<img 
-									src={resultados_actuales[1]!==resultados_actuales[2] ? Cross : Check} 
-									alt={resultados_actuales[1]!==resultados_actuales[2] ? 'cross' : 'check'} 
+									src={resultados_actuales[1] ? Cross : Check} 
+									alt={resultados_actuales[1] ? 'cross' : 'check'} 
 								/>
 								<p>{resultados_actuales[1] || resultados_actuales[2]}</p>
 							</div>
