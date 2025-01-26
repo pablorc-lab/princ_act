@@ -63,7 +63,6 @@
 .incorrectas_container {
 	display: grid;
   margin: 70px 100px;
-  padding-bottom: 20px;
   border-radius: 20px;
   background-color: #494949;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
@@ -79,7 +78,7 @@
 .incorrectas {
   display: flex;
   align-items: center;
-  padding: 20px 0 0 30px;
+  padding: 20px 0 20px 30px;
   gap: 30px;
 }
 
@@ -104,6 +103,9 @@
   flex-wrap:wrap;
   align-items: center;
 	gap: 10px
+}
+.incorrectas_text li:nth-child(odd){ 
+  background-color: rgb(88, 88, 88);
 }
 
 /*? Princpio*/
