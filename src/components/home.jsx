@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { infoText } from './info_text';
 import QuestionsSize from './preguntas/cantidad';
@@ -16,16 +16,32 @@ export default function Home() {
   const [tip_text, setTipText] = useState(null);
   const [show_data, setShowData] = useState(false);
   const [questions_size, setQuestionsSize] = useState(false);
-  const [princ_mode, setPrincMode] = useState(true);
+  const [game_mode, setGameMode] = useState("principios");
+  const [preguntas, setPreguntas] = useState([]);
+
+  // Obtener el JSON del modo actual cada vez que el gamemode cambie
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        // Importar el archivo JSON según el valor de dataFile
+        const data = await import(`./../data/${game_mode}.json`);
+        setPreguntas(data.default);
+      } 
+      catch (error) {
+        console.error(`Error cargando el archivo ${game_mode}.json:`, error);
+      }
+    }
+    fetchData();
+  }, [game_mode]);
 
   return (
     <>
       <section className='menu_btns'>
-        <div className={`princ_act_div ${princ_mode && "show"}`} onClick={() => setPrincMode(true)}>
+        <div className={`princ_act_div ${game_mode === "principios" && "show"}`} onClick={() => setGameMode("principios")}>
           <img src={Princ_act} alt="Princ_act"/>
           <span>Principios activos</span>
         </div>
-        <div className={`planta_div ${!princ_mode && "show"}`} onClick={() => setPrincMode(false)}>
+        <div className={`planta_div ${game_mode === "plantas" && "show"}`} onClick={() => setGameMode("plantas")}>
           <img src={Planta_menu} alt="Planta"/>
           <span>Fitoterapia</span>
         </div>
@@ -38,11 +54,11 @@ export default function Home() {
 
       <main className='menu'>
         <div className='gastly'>
-          <img src={`${princ_mode ? Gastly : Mandragora}`} alt="gastly" />
+          <img src={`${game_mode === "principios" ? Gastly : Mandragora}`} alt="gastly" />
         </div>
 
-        <div className={`botones ${!princ_mode ? "plant" : "princ_act"}`}>
-          <Link to={`/practicar/${princ_mode ? 'principios' : 'plantas'}`}>
+        <div className={`botones ${game_mode}`}>
+          <Link to={`/practicar/${game_mode}`}>
           <button
               onMouseOver={() => setTipText(infoText.practicar)}
               onMouseOut={() => setTipText(null)}
@@ -68,12 +84,12 @@ export default function Home() {
 
       {/* Mostrar apuntes si está activado*/}
       <div className={`data_container ${show_data && 'show'}`}> 
-        <Apuntes setShowData={setShowData} dataFile={`${princ_mode ? "principios" : "plantas"}`}/> 
+        <Apuntes setShowData={setShowData} Preguntas={preguntas} GameMode={game_mode}/> 
       </div>
 
       {/* Si questions_size es true, muestra el componente QuestionsSize */}
       <div className={`questions_container ${questions_size && 'show'}`}>
-        <QuestionsSize setQuestionsSize={setQuestionsSize} dataFile={`${princ_mode ? "principios" : "plantas"}`}/>
+        <QuestionsSize setQuestionsSize={setQuestionsSize} Preguntas={preguntas} GameMode={game_mode}/>
       </div>
     </>
   );

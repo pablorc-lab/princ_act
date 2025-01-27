@@ -1,27 +1,9 @@
-import React, { useEffect, useState } from "react";
 import Cross from "../../images/cross_fill.webp"
 import "./apuntes.css"
 
-export default function Apuntes({ setShowData, dataFile = "principios" }) {
-  const [Preguntas, setPreguntas] = useState([]);
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        // Importa el archivo JSON según el valor de dataFile
-        const data = await import(`./../../data/${dataFile}.json`);
-        setPreguntas(data.default);
-      } 
-      catch (error) {
-        console.error("Error loading JSON file:", error);
-      }
-    }
-
-    fetchData();
-  }, [dataFile]);
-
+export default function Apuntes({ setShowData, Preguntas, GameMode }) {
   return (
-    <section className={`apuntes_container ${dataFile}`}>
+    <section className={`apuntes_container ${GameMode}`}>
       <img
         id="cross_img"
         src={Cross}
@@ -29,7 +11,7 @@ export default function Apuntes({ setShowData, dataFile = "principios" }) {
         width="40"
         onClick={() => { setShowData(false) }}
       />
-      <h1>{Preguntas.length} {dataFile}</h1>
+      <h1>{Preguntas.length} {GameMode}</h1>
 
       <ul className="apuntes_list">
         {Preguntas.map((principio, index) => (

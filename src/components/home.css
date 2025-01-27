@@ -111,14 +111,14 @@
 }
 
 
-.botones.plant button{ background-color: rgba(189, 236, 182, 0.8);}
+.botones.plantas button{ background-color: rgba(189, 236, 182, 0.8);}
 .botones button:hover {
   background-color: rgba(137, 133, 182); 
   transform: scale(1.1);
   box-shadow: 0 0 15px rgba(137, 131, 199,1);
 }
 
-.botones.plant button:hover {
+.botones.plantas button:hover {
   background-color: rgba(189, 236, 182, 0.9); 
   transform: scale(1.1);
   box-shadow: 0 0 15px rgba(189, 236, 182);

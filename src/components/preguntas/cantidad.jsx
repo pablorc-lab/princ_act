@@ -4,27 +4,11 @@ import "./cantidad.css"
 import Cancel from "../../images/menu_cross.webp"
 import Advance from "../../images/menu_check.webp"
 
-export default function QuestionsSize({ setQuestionsSize, dataFile = "principios" }) {
+export default function QuestionsSize({ setQuestionsSize, Preguntas, GameMode}) {
   const [validSize, setValidSize] = useState(false);
   const [number, setNumber] = useState('');
   const navigate = useNavigate();
   const inputRef = useRef(null);
-  const [Preguntas, setPreguntas] = useState([]);
-
-  useEffect(() => {
-      async function fetchData() {
-        try {
-          // Importa el archivo JSON según el valor de dataFile
-          const data = await import(`./../../data/${dataFile}.json`);
-          setPreguntas(data.default);
-        } 
-        catch (error) {
-          console.error("Error loading JSON file:", error);
-        }
-      }
-  
-      fetchData();
-    }, [dataFile]);
 
   // Poner el foco en el input cuando el componente se renderiza
   useEffect(() => {
@@ -36,7 +20,6 @@ export default function QuestionsSize({ setQuestionsSize, dataFile = "principios
   const handleInputChange = (e) => {
     const value = e.target.value;
     setNumber(value);
-
     const valor_correcto = (value > 0) && (value <= Preguntas.length)
     setValidSize(valor_correcto);
   }
@@ -67,7 +50,7 @@ export default function QuestionsSize({ setQuestionsSize, dataFile = "principios
         <img
           src={Advance}
           className={validSize ? "check_allow" : "check_deny"}
-          onClick={() => validSize && navigate(`/quiz/${dataFile}`, { state: { cantidad_preguntas: number } })}
+          onClick={() => validSize && navigate(`/quiz/${GameMode}`, { state: { cantidad_preguntas: number } })}
         />
       </div>
     </article>
