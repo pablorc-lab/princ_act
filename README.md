@@ -6,7 +6,7 @@ Esta página desarrollada con React permite al usuario interactuar con una lista
 [![Home.png](https://i.postimg.cc/3wLFL7zm/Captura.png)](https://postimg.cc/wtmNMKqj)
 
 ## Home
-En la página principal (Home), se muestra una lista completa de los principios activos o plantas disponibles en la web, acompañados de sus respectivas soluciones.
+En la página principal (*Home*), al pulsar en el icono del libro (*Apuntes*) se muestra una lista completa de los principios activos o plantas disponibles en la web, acompañados de sus respectivas soluciones.
 
 [![Apuntes.png](https://i.postimg.cc/hj1s9Tc4/Captura.png)](https://postimg.cc/tZ7Fb1s8)
 
