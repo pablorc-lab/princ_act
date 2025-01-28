@@ -38,7 +38,7 @@
 }
 .menu_btns div.show { opacity: 1;}
 
-.planta_div:hover, .planta_div.show { background-color: #bdecb6 ;}
+.planta_div:hover, .planta_div.show { background-color: rgb(150, 202, 142) ;}
 .princ_act_div:hover, .princ_act_div.show { background-color: rgb(137, 133, 182);}
 
 /*? Seccion de apuntes*/
@@ -110,18 +110,15 @@
   box-shadow: 0 0 10px rgba(0, 0, 0,0.4);
 }
 
-
-.botones.plantas button{ background-color: rgba(189, 236, 182, 0.8);}
+.botones.plantas button{ background-color: rgba(150, 202, 142, 0.8);}
 .botones button:hover {
   background-color: rgba(137, 133, 182); 
-  transform: scale(1.1);
+  transform: scale(1.05);
   box-shadow: 0 0 15px rgba(137, 131, 199,1);
 }
-
 .botones.plantas button:hover {
-  background-color: rgba(189, 236, 182, 0.9); 
-  transform: scale(1.1);
-  box-shadow: 0 0 15px rgba(189, 236, 182);
+  background-color: rgba(150, 202, 142, 0.9); 
+  box-shadow: 0 0 15px rgba(150, 202, 142, 0.8);
 }
 
 .tip {
@@ -166,15 +163,13 @@
   backdrop-filter: blur(5px); /* Aplica el desenfoque */
 }
 
-/* Asegúrar de que el componente QuestionsSize esté por encima del fondo */
+/* Mostrar animaciones al aparecer*/
 .questions_container, .data_container {
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.25s ease-in;
+  animation: fadeIn 0.25s ease-in-out forwards;
 }
-.questions_container.show, .data_container.show {
-  opacity: 1;
-  visibility: visible;
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to { opacity: 1;}
 }
 
 /* Para dispositivos móviles */

@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./cantidad.css"
 import Cancel from "../../images/menu_cross.webp"
@@ -6,16 +6,8 @@ import Advance from "../../images/menu_check.webp"
 
 export default function QuestionsSize({ setQuestionsSize, Preguntas, GameMode}) {
   const [validSize, setValidSize] = useState(false);
-  const [number, setNumber] = useState('');
+  const [number, setNumber] = useState("");
   const navigate = useNavigate();
-  const inputRef = useRef(null);
-
-  // Poner el foco en el input cuando el componente se renderiza
-  useEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.focus(); // Colocar el foco en el input
-    }
-  }, []);
 
   const handleInputChange = (e) => {
     const value = e.target.value;
@@ -27,8 +19,13 @@ export default function QuestionsSize({ setQuestionsSize, Preguntas, GameMode}) 
   // Manejar el pulsado de la tecla Enter
   const handleKeyPress = (event) => {
     if (event.key === "Enter" && validSize)
-      navigate('/quiz', { state: { cantidad_preguntas: number }});
+      navigate(`/quiz/${GameMode}`, { state: { cantidad_preguntas: number } });
   };
+
+  const handleCancelClick = () => {
+    setQuestionsSize(false);
+    setNumber("");
+  }
 
   return (
     <article className="cantidad_container">
@@ -46,9 +43,10 @@ export default function QuestionsSize({ setQuestionsSize, Preguntas, GameMode}) 
       </div>
 
       <div className="cantidad_images">
-        <img src={Cancel} id="cancel_img" onClick={() => setQuestionsSize(false)} />
+        <img src={Cancel} id="cancel_img" alt="cancel img" onClick={handleCancelClick} />
         <img
           src={Advance}
+          alt="Advance"
           className={validSize ? "check_allow" : "check_deny"}
           onClick={() => validSize && navigate(`/quiz/${GameMode}`, { state: { cantidad_preguntas: number } })}
         />

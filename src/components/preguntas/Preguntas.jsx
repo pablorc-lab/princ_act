@@ -35,7 +35,7 @@ export default function Quiz_preguntas({Preguntas, setIncorrectas, setShowResult
 		if(!respuesta_inmediata){
 			setPreguntasMezcladas(preguntasAleatorias.slice(0, question_size)) 
 		}
-	}, [Preguntas]);
+	}, [Preguntas, question_size, respuesta_inmediata, tipoDatos]);
 
 	//*Funciones para controlar los estados
 	const verificarRespuesta = () => {
@@ -211,7 +211,6 @@ export default function Quiz_preguntas({Preguntas, setIncorrectas, setShowResult
 			<section className={`Respuesta ${tipoDatos}`} style={{backgroundColor: mostrar_solucion && "rgba(195, 190, 237, 0.1)"}}>
 				<img id="Atomo_img" src={`${tipoDatos === "principios" ? Atomo : Planta}`} alt="atomo" style={{ opacity: mostrar_solucion ? 0.3 : 1 }}				/>
 				<input
-
 				 	style={{ opacity: mostrar_solucion ? 0 : 1 }}
 					type='text'
 					autoFocus

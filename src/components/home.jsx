@@ -83,14 +83,19 @@ export default function Home() {
       {(show_data || questions_size) && (<div className="background-blur"></div>)}
 
       {/* Mostrar apuntes si está activado*/}
-      <div className={`data_container ${show_data && 'show'}`}> 
-        <Apuntes setShowData={setShowData} Preguntas={preguntas} GameMode={game_mode}/> 
-      </div>
+      {show_data && (
+        <div className={`data_container`}> 
+          <Apuntes setShowData={setShowData} Preguntas={preguntas} GameMode={game_mode}/> 
+        </div>
+      )}
 
       {/* Si questions_size es true, muestra el componente QuestionsSize */}
-      <div className={`questions_container ${questions_size && 'show'}`}>
-        <QuestionsSize setQuestionsSize={setQuestionsSize} Preguntas={preguntas} GameMode={game_mode}/>
-      </div>
+      {questions_size && (
+        <div className={`questions_container`}>
+          <QuestionsSize setQuestionsSize={setQuestionsSize} Preguntas={preguntas} GameMode={game_mode} />
+        </div>
+      )}
+
     </>
   );
 }

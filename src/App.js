@@ -1,5 +1,5 @@
 import './App.css';
-import { HashRouter, Route, Routes, Link } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import Home from './components/home';
 import Quiz from './components/quiz';
 
