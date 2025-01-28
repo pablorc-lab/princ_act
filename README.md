@@ -1,4 +1,4 @@
-# Test de principios activos
+# Web de principios activos y fitoterapias
 [![My Skills](https://skillicons.dev/icons?i=react,js,html,css)](https://skillicons.dev)
 
 **Prueba la aplicación directamente en este enlace: [https://pablorc-lab.github.io/princ_act/](https://pablorc-lab.github.io/princ_act/)**
