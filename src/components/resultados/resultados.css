@@ -66,7 +66,6 @@
   border-radius: 20px;
   background-color: #494949;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
-	box-sizing: border-box; /* Asegura que padding se incluya dentro del tamaño */
 }
 
 .incorrectas_container p {
@@ -106,6 +105,10 @@
 }
 .incorrectas_text li:nth-child(odd){ 
   background-color: rgb(88, 88, 88);
+}
+.incorrectas_text li:last-child{
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 
 /*? Princpio*/
