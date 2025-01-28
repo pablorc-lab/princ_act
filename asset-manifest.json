@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/princ_act/static/css/main.74549751.css",
-    "main.js": "/princ_act/static/js/main.774ce092.js",
+    "main.css": "/princ_act/static/css/main.578e33cd.css",
+    "main.js": "/princ_act/static/js/main.f64ea2a7.js",
     "static/js/371.fbf71b7a.chunk.js": "/princ_act/static/js/371.fbf71b7a.chunk.js",
     "static/js/630.e6021d3b.chunk.js": "/princ_act/static/js/630.e6021d3b.chunk.js",
     "static/js/294.5cc17680.chunk.js": "/princ_act/static/js/294.5cc17680.chunk.js",
@@ -28,11 +28,11 @@
     "static/media/check.webp": "/princ_act/static/media/check.9042eb270d40f4e62fa9.webp",
     "index.html": "/princ_act/index.html",
     "static/media/thumb_up.svg": "/princ_act/static/media/thumb_up.03e4271e8ae0263dcfa9c7459fb37ad3.svg",
-    "main.74549751.css.map": "/princ_act/static/css/main.74549751.css.map",
-    "main.774ce092.js.map": "/princ_act/static/js/main.774ce092.js.map"
+    "main.578e33cd.css.map": "/princ_act/static/css/main.578e33cd.css.map",
+    "main.f64ea2a7.js.map": "/princ_act/static/js/main.f64ea2a7.js.map"
   },
   "entrypoints": [
-    "static/css/main.74549751.css",
-    "static/js/main.774ce092.js"
+    "static/css/main.578e33cd.css",
+    "static/js/main.f64ea2a7.js"
   ]
 }
