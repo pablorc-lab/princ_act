@@ -1,6 +1,8 @@
 # Test de principios activos
 [![My Skills](https://skillicons.dev/icons?i=react,js,html,css)](https://skillicons.dev)
 
+**Prueba la aplicación directamente en este enlace: [https://pablorc-lab.github.io/princ_act/](https://pablorc-lab.github.io/princ_act/)**
+
 Esta página desarrollada con React permite al usuario interactuar con una lista de elementos (principios activos o fitoterapias), ingresando información relacionada con ellos. Una vez completada la tarea, se mostrará una ventana de resultados que incluye un resumen con el número de respuestas correctas, la calificación final, un botón para reiniciar, y un desglose de las respuestas incorrectas junto con sus soluciones correspondientes.
 
 [![Home.png](https://i.postimg.cc/3wLFL7zm/Captura.png)](https://postimg.cc/wtmNMKqj)
