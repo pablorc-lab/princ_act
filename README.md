@@ -10,7 +10,7 @@ En la página principal (*Home*), al pulsar en el icono del libro (*Apuntes*) se
 
 [![Apuntes.png](https://i.postimg.cc/hj1s9Tc4/Captura.png)](https://postimg.cc/tZ7Fb1s8)
 
-Además, desde esta misma sección, se puede alternar entre los dos modos de juego utilizando los botones ubicados en la parte superior izquierda.
+Además, desde esta misma sección, se puede alternar entre la visualización de principios activos o fitoterapias utilizando los botones ubicados en la parte superior izquierda.
 
 [![Captura.png](https://i.postimg.cc/XY0YGCHD/Captura.png)](https://postimg.cc/zV0r4V1n)
 
