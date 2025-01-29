@@ -79,9 +79,6 @@ export default function Home() {
           <p>{tip_text}</p>
       </article>
 
-      {/* Mostrar fondo borroso*/}
-      {(show_data || questions_size) && (<div className="background-blur"></div>)}
-
       {/* Mostrar apuntes si está activado*/}
       {show_data && (
         <div className={`data_container`}> 

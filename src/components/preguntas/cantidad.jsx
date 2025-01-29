@@ -28,7 +28,7 @@ export default function QuestionsSize({ setQuestionsSize, Preguntas, GameMode}) 
   }
 
   return (
-    <article className="cantidad_container">
+    <dialog className="cantidad_container" ref={(el) => el && el.showModal()}>
       <h2>¿Cuantas preguntas quieres que se muestren?</h2>
 
       <div className="input_container">
@@ -51,6 +51,6 @@ export default function QuestionsSize({ setQuestionsSize, Preguntas, GameMode}) 
           onClick={() => validSize && navigate(`/quiz/${GameMode}`, { state: { cantidad_preguntas: number } })}
         />
       </div>
-    </article>
+    </dialog>
   )
 }

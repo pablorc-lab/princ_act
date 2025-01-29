@@ -154,18 +154,9 @@
 } 
 .tip.show img {opacity: 1;}
 
-.background-blur {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  backdrop-filter: blur(5px); /* Aplica el desenfoque */
-}
-
 /* Mostrar animaciones al aparecer*/
-.questions_container, .data_container {
-  animation: fadeIn 0.25s ease-in-out forwards;
+.data_container dialog[open], .questions_container dialog[open]{
+  animation: fadeIn 0.2s ease-in-out forwards;
 }
 @keyframes fadeIn {
   from {opacity: 0;}

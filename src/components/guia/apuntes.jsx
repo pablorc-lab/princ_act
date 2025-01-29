@@ -2,8 +2,9 @@ import Cross from "../../images/cross_fill.webp"
 import "./apuntes.css"
 
 export default function Apuntes({ setShowData, Preguntas, GameMode }) {
+
   return (
-    <section className={`apuntes_container ${GameMode}`}>
+    <dialog className={`apuntes_container ${GameMode}`} ref={(el) => el && el.showModal()}>
       <img
         id="cross_img"
         src={Cross}
@@ -21,6 +22,6 @@ export default function Apuntes({ setShowData, Preguntas, GameMode }) {
           </li>
         ))}
       </ul>
-    </section>
+    </dialog>
   )
 }
