@@ -18,5 +18,10 @@
   {"principio": "Estevia", "tipo": "diabetes", "uso": ""},
   {"principio": "Karité", "tipo": "emoliente", "uso": "(suaviza/hidrata)"},
   {"principio": "Soja", "tipo": "fitoestrógenos", "uso": "(menopausia)"},
-  {"principio": "Brezo", "tipo": "infecciones urinarias", "uso": ""}
+  {"principio": "Brezo", "tipo": "infecciones urinarias", "uso": ""},
+  {"principio": "Centella asiática", "tipo": "cicatrizante", "uso": ""},
+  {"principio": "Pasiflora", "tipo": "relajante", "uso": ""},
+  {"principio": "Cayena", "tipo": "rubefaciente", "uso": "(provoca calor)"},
+  {"principio": "Árnica", "tipo": "antiinflamatorio", "uso": ""},
+  {"principio": "Hipérico o Hierba de san juan", "tipo": "depresión", "uso": ""}
 ]
