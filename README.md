@@ -22,7 +22,7 @@ cd tu_repositorio
 
 ### **Paso 2: (Opcional) Instalar Vite si no está configurado**
 ```bash
-npm create vite@latest tu_repositorio --template react
+npm install @vitejs/plugin-react --save-dev
 ```
 
 ### **Paso 3: Instalar las dependencias necesarias**
