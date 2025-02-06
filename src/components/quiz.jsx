@@ -1,14 +1,14 @@
-import React, { useState, useEffect} from 'react'
+import React, { useState, useEffect, lazy, Suspense} from 'react'
 import { useLocation, useParams  } from 'react-router-dom'; 
-import Quiz_preguntas from './preguntas/Preguntas';
-import Final_result from './resultados/resultados';
+
+const Quiz_preguntas = lazy(() => import('./preguntas/Preguntas'));
+const Final_result = lazy(() => import('./resultados/resultados'));
 
 // Componente general para mostrar las preguntas de un modo u otro (respuesta_inmediata)
 // Cuando `show_result` sea True, será porque se ha llegado al final y se muestra los resultados
 export default function Quiz({respuesta_inmediata=false}){
   const { type } = useParams(); // Accede al tipo del enlace
   const [Preguntas, setPreguntas] = useState([]);
-
   const [incorrectas, setIncorrectas] = useState([]);
   const [show_result, setShowResult] = useState(false);
   const location = useLocation();
@@ -34,8 +34,8 @@ export default function Quiz({respuesta_inmediata=false}){
   };
 
   return (
-    <>
-      {/**Si `tam_preguntas` es distinto de null, será porque se ha llegado al final*/}
+    <Suspense fallback={<h1 style={{ textAlign: "center" }}>Cargando {show_result ? "resultados" : "preguntas"}...</h1>}>     
+    {/**Si `tam_preguntas` es distinto de null, será porque se ha llegado al final*/}
       {!show_result ? ( 
         <Quiz_preguntas 
           Preguntas={Preguntas}
@@ -52,6 +52,6 @@ export default function Quiz({respuesta_inmediata=false}){
           handleReiniciar={handleReiniciar}  // Pasar función para reiniciar 
         />
       )}
-    </>
+    </Suspense>
   );
 }

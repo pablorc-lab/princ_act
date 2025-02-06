@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { lazy, Suspense } from "react";
+
 import { infoText } from './info_text';
-import QuestionsSize from './preguntas/cantidad';
-import Apuntes from './guia/apuntes';
+const QuestionsSize = lazy(() => import("./preguntas/cantidad"));
+const Apuntes = lazy(() => import("./guia/apuntes"));
 import "./home.css";
 
 import Princ_act from "../images/princp_menu.webp";
@@ -81,16 +83,24 @@ export default function Home() {
 
       {/* Mostrar apuntes si está activado*/}
       {show_data && (
-        <div className={`data_container`}> 
-          <Apuntes setShowData={setShowData} Preguntas={preguntas} GameMode={game_mode}/> 
-        </div>
+        <Suspense fallback={null}>
+          <div className="data_container">
+            <Apuntes setShowData={setShowData} Preguntas={preguntas} GameMode={game_mode} />
+          </div>
+        </Suspense>
       )}
 
       {/* Si questions_size es true, muestra el componente QuestionsSize */}
       {questions_size && (
-        <div className={`questions_container`}>
-          <QuestionsSize setQuestionsSize={setQuestionsSize} Preguntas={preguntas} GameMode={game_mode} />
-        </div>
+        <Suspense fallback={null}>
+          <div className="questions_container">
+            <QuestionsSize 
+              setQuestionsSize={setQuestionsSize} 
+              Preguntas={preguntas} 
+              GameMode={game_mode} 
+            />
+          </div>
+        </Suspense>
       )}
 
     </>
