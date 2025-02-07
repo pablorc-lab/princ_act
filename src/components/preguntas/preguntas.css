@@ -51,6 +51,7 @@
   position: relative;
   height: 305px; 
   min-width: 610px;
+  min-height: max-content;
   z-index: 99;
   display: grid;
   justify-content: center;
@@ -78,7 +79,15 @@
   margin-right: 30px;
 }
 .incorrecta, .correcta {
+  display: flex;
+  align-items: center;
   font-size: 25px;
+  gap: 15px;
+}
+.incorrecta img, .correcta img {
+  width: 40px;
+  height: auto;
+  aspect-ratio: 1 / 1;
 }
 .incorrecta p{color: #f06f79;}
 .correcta p{color: #96cf8f;}

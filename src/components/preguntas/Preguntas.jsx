@@ -188,7 +188,7 @@ export default function Quiz_preguntas({Preguntas, setIncorrectas, setShowResult
 							</div>
 						</article>
 
-						<div class="thumb" onMouseEnter={() => setResiveAnswer(!reviseAnswer)} onMouseLeave={() => setResiveAnswer(!reviseAnswer)}>
+						<div className="thumb" onMouseEnter={() => setResiveAnswer(!reviseAnswer)} onMouseLeave={() => setResiveAnswer(!reviseAnswer)}>
 							<img src={Thumb} alt='thunb' width="50px" onClick={handleResiveAnswer}/>
 							{reviseAnswer && <p>Si tu respuesta es correcta pulsa para corregir</p>}
 						</div>
