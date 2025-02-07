@@ -23,5 +23,10 @@
   {"principio": "Pasiflora", "tipo": "relajante", "uso": ""},
   {"principio": "Cayena", "tipo": "rubefaciente", "uso": "(provoca calor)"},
   {"principio": "Árnica", "tipo": "antiinflamatorio", "uso": ""},
-  {"principio": "Hipérico o Hierba de san juan", "tipo": "depresión", "uso": ""}
+  {"principio": "Hipérico o Hierba de san juan", "tipo": "depresión", "uso": ""},
+  {"principio": "Eufrasia", "tipo": "descongestionante ocular", "uso": ""},
+  {"principio": "Equinácea", "tipo": "defensas y resfriados", "uso": ""},
+  {"principio": "Ortosifón", "tipo": "gota", "uso": ""},
+  {"principio": "Arandano rojo americano", "tipo": "infección urinaria", "uso": ""},
+  {"principio": "Lavanta", "tipo": "relajante", "uso": ""}
 ]
